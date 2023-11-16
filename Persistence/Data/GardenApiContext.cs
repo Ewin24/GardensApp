@@ -5,10 +5,14 @@ using Microsoft.EntityFrameworkCore;
 
 namespace Persistence.Data;
 
-public partial class WebApiContext : DbContext
+public partial class GardenApiContext : DbContext
 {
+    public GardenApiContext()
+    {
+    }
 
-    public WebApiContext(DbContextOptions<WebApiContext> options): base(options)
+    public GardenApiContext(DbContextOptions<GardenApiContext> options)
+        : base(options)
     {
     }
 
@@ -24,7 +28,7 @@ public partial class WebApiContext : DbContext
 
     public virtual DbSet<Country> Countries { get; set; }
 
-    public virtual DbSet<Employed> Employeds { get; set; }
+    public virtual DbSet<Employee> Employees { get; set; }
 
     public virtual DbSet<Location> Locations { get; set; }
 
@@ -44,9 +48,12 @@ public partial class WebApiContext : DbContext
 
     public virtual DbSet<State> States { get; set; }
 
-protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder) 
-=> optionsBuilder.UseMySql("server=localhost;user=root;password=123456;database=jardineria", Microsoft.EntityFrameworkCore.ServerVersion.Parse("8.0.34-mysql"));
-/*
+    public virtual DbSet<TypeContact> TypeContacts { get; set; }
+
+    protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+#warning To protect potentially sensitive information in your connection string, you should move it out of source code. You can avoid scaffolding the connection string by using the Name= syntax to read it from configuration - see https://go.microsoft.com/fwlink/?linkid=2131148. For more guidance on storing connection strings, see http://go.microsoft.com/fwlink/?LinkId=723263.
+        => optionsBuilder.UseMySql("server=localhost;user=root;password=123456;database=jardineria", Microsoft.EntityFrameworkCore.ServerVersion.Parse("8.0.34-mysql"));
+
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
         modelBuilder
@@ -91,11 +98,9 @@ protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
 
             entity.ToTable("client");
 
-            entity.HasIndex(e => e.IdEmployedFk, "Fk1_product_code");
+            entity.HasIndex(e => e.IdContactFk, "FK_Contact");
 
-            entity.HasIndex(e => e.IdCountryFk, "Fk2_IdCountryFk");
-
-            entity.HasIndex(e => e.IdContactFk, "Fk3_IdContactFk");
+            entity.HasIndex(e => e.IdEmployeeFk, "FK_Employee_FK");
 
             entity.Property(e => e.ClientCode)
                 .ValueGeneratedNever()
@@ -106,18 +111,16 @@ protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
             entity.Property(e => e.CreditLimit)
                 .HasPrecision(15, 2)
                 .HasColumnName("credit_limit");
+            entity.Property(e => e.IdContactFk).HasColumnName("IdContactFK");
+            entity.Property(e => e.IdEmployeeFk).HasColumnName("IdEmployeeFK");
 
             entity.HasOne(d => d.IdContactFkNavigation).WithMany(p => p.Clients)
                 .HasForeignKey(d => d.IdContactFk)
-                .HasConstraintName("Fk3_IdContactFk");
+                .HasConstraintName("FK_Contact");
 
-            entity.HasOne(d => d.IdCountryFkNavigation).WithMany(p => p.Clients)
-                .HasForeignKey(d => d.IdCountryFk)
-                .HasConstraintName("Fk2_IdCountryFk");
-
-            entity.HasOne(d => d.IdEmployedFkNavigation).WithMany(p => p.Clients)
-                .HasForeignKey(d => d.IdEmployedFk)
-                .HasConstraintName("Fk1_product_code");
+            entity.HasOne(d => d.IdEmployeeFkNavigation).WithMany(p => p.Clients)
+                .HasForeignKey(d => d.IdEmployeeFk)
+                .HasConstraintName("FK_Employee_FK");
         });
 
         modelBuilder.Entity<Company>(entity =>
@@ -151,9 +154,12 @@ protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
             entity.Property(e => e.ContactName)
                 .HasMaxLength(30)
                 .HasColumnName("contact_name");
-            entity.Property(e => e.PostalCode)
-                .HasMaxLength(10)
-                .HasColumnName("postal_code");
+            entity.Property(e => e.ContactNumbrer)
+                .HasMaxLength(15)
+                .HasColumnName("contact_numbrer");
+            entity.Property(e => e.Fax)
+                .HasMaxLength(15)
+                .HasColumnName("fax");
         });
 
         modelBuilder.Entity<Country>(entity =>
@@ -168,19 +174,19 @@ protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
                 .HasColumnName("name");
         });
 
-        modelBuilder.Entity<Employed>(entity =>
+        modelBuilder.Entity<Employee>(entity =>
         {
-            entity.HasKey(e => e.EmployedCode).HasName("PRIMARY");
+            entity.HasKey(e => e.EmployeeCode).HasName("PRIMARY");
 
-            entity.ToTable("employed");
+            entity.ToTable("employee");
 
             entity.HasIndex(e => e.IdBossFk, "Fk_IdBossFk");
 
             entity.HasIndex(e => e.OfficeCode, "Fk_OfficeCodeFk");
 
-            entity.Property(e => e.EmployedCode)
+            entity.Property(e => e.EmployeeCode)
                 .ValueGeneratedNever()
-                .HasColumnName("employed_code");
+                .HasColumnName("employee_code");
             entity.Property(e => e.Email)
                 .HasMaxLength(100)
                 .HasColumnName("email");
@@ -203,12 +209,12 @@ protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
                 .HasMaxLength(50)
                 .HasColumnName("position");
 
-            entity.HasOne(d => d.IdBossFkNavigation).WithMany(p => p.Employeds)
+            entity.HasOne(d => d.IdBossFkNavigation).WithMany(p => p.Employees)
                 .HasForeignKey(d => d.IdBossFk)
                 .OnDelete(DeleteBehavior.ClientSetNull)
                 .HasConstraintName("Fk_IdBossFk");
 
-            entity.HasOne(d => d.OfficeCodeNavigation).WithMany(p => p.Employeds)
+            entity.HasOne(d => d.OfficeCodeNavigation).WithMany(p => p.Employees)
                 .HasForeignKey(d => d.OfficeCode)
                 .OnDelete(DeleteBehavior.ClientSetNull)
                 .HasConstraintName("Fk_OfficeCodeFk");
@@ -257,6 +263,7 @@ protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
             entity.Property(e => e.NumeroPri).HasColumnName("numeroPri");
             entity.Property(e => e.NumeroSec).HasColumnName("numeroSec");
             entity.Property(e => e.NumeroTer).HasColumnName("numeroTer");
+            entity.Property(e => e.PostCode).HasMaxLength(10);
             entity.Property(e => e.TipoDeVia)
                 .HasMaxLength(50)
                 .HasColumnName("tipoDeVia");
@@ -276,8 +283,6 @@ protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
 
             entity.ToTable("office");
 
-            entity.HasIndex(e => e.IdCountryFk, "Fk_IdCountryFk");
-
             entity.Property(e => e.OfficeCode)
                 .HasMaxLength(10)
                 .HasColumnName("office_code");
@@ -287,10 +292,6 @@ protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
             entity.Property(e => e.PostalCode)
                 .HasMaxLength(10)
                 .HasColumnName("postal_code");
-
-            entity.HasOne(d => d.IdCountryFkNavigation).WithMany(p => p.Offices)
-                .HasForeignKey(d => d.IdCountryFk)
-                .HasConstraintName("Fk_IdCountryFk");
         });
 
         modelBuilder.Entity<Order>(entity =>
@@ -450,18 +451,12 @@ protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
 
             entity.ToTable("proveedor");
 
-            entity.HasIndex(e => e.IdCompaniesFk, "Fk_IdCompanies");
-
             entity.Property(e => e.Id).HasColumnName("id");
             entity.Property(e => e.Cellphone).HasColumnName("cellphone");
             entity.Property(e => e.DentificationArd).HasColumnName("dentification_ard");
             entity.Property(e => e.Name)
                 .HasMaxLength(50)
                 .HasColumnName("name");
-
-            entity.HasOne(d => d.IdCompaniesFkNavigation).WithMany(p => p.Proveedors)
-                .HasForeignKey(d => d.IdCompaniesFk)
-                .HasConstraintName("Fk_IdCompanies");
         });
 
         modelBuilder.Entity<State>(entity =>
@@ -480,9 +475,30 @@ protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
             entity.HasOne(d => d.IdCountryFkNavigation).WithMany(p => p.States)
                 .HasForeignKey(d => d.IdCountryFk)
                 .HasConstraintName("Fk_IdCountry");
-        }); */
+        });
 
-       
+        modelBuilder.Entity<TypeContact>(entity =>
+        {
+            entity.HasKey(e => e.Id).HasName("PRIMARY");
+
+            entity.ToTable("type_contact");
+
+            entity.HasIndex(e => e.IdContactFk, "Fk_IdContactFk");
+
+            entity.Property(e => e.Id)
+                .ValueGeneratedNever()
+                .HasColumnName("id");
+            entity.Property(e => e.TypeContact1)
+                .HasMaxLength(50)
+                .HasColumnName("type_contact");
+
+            entity.HasOne(d => d.IdContactFkNavigation).WithMany(p => p.TypeContacts)
+                .HasForeignKey(d => d.IdContactFk)
+                .HasConstraintName("Fk_IdContactFk");
+        });
+
+        OnModelCreatingPartial(modelBuilder);
     }
 
-
+    partial void OnModelCreatingPartial(ModelBuilder modelBuilder);
+}

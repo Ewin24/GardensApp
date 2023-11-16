@@ -11,9 +11,5 @@ public partial class Office
 
     public string Phone { get; set; } = null!;
 
-    public int? IdCountryFk { get; set; }
-
-    public virtual ICollection<Employed> Employeds { get; set; } = new List<Employed>();
-
-    public virtual Country? IdCountryFkNavigation { get; set; }
+    public virtual ICollection<Employee> Employees { get; set; } = new List<Employee>();
 }

@@ -11,17 +11,13 @@ public partial class Client
 
     public decimal? CreditLimit { get; set; }
 
-    public int? IdEmployedFk { get; set; }
-
-    public int? IdCountryFk { get; set; }
+    public int? IdEmployeeFk { get; set; }
 
     public int? IdContactFk { get; set; }
 
     public virtual Contact? IdContactFkNavigation { get; set; }
 
-    public virtual Country? IdCountryFkNavigation { get; set; }
-
-    public virtual Employed? IdEmployedFkNavigation { get; set; }
+    public virtual Employee? IdEmployeeFkNavigation { get; set; }
 
     public virtual ICollection<Location> Locations { get; set; } = new List<Location>();
 

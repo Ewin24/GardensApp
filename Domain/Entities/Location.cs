@@ -33,6 +33,8 @@ public partial class Location
 
     public int? IdCityFk { get; set; }
 
+    public string? PostCode { get; set; }
+
     public virtual City? IdCityFkNavigation { get; set; }
 
     public virtual Client? IdClientFkNavigation { get; set; }
