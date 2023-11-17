@@ -3,9 +3,8 @@ using System.Collections.Generic;
 
 namespace Domain.Entities;
 
-public partial class TypeContact
+public class TypeContact :BaseEntity
 {
-    public int Id { get; set; }
 
     public string? TypeContact1 { get; set; }
 

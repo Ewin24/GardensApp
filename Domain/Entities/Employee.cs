@@ -3,8 +3,9 @@ using System.Collections.Generic;
 
 namespace Domain.Entities;
 
-public partial class Employee
+public  class Employee :BaseEntity
 {
+    
     public int EmployeeCode { get; set; }
 
     public string FirstName { get; set; } = null!;

@@ -3,8 +3,8 @@ using System.Collections.Generic;
 
 namespace Domain.Entities;
 
-public partial class Order
-{
+public class Order:BaseEntity
+{ 
     public int OrderCode { get; set; }
 
     public DateOnly OrderDate { get; set; }
