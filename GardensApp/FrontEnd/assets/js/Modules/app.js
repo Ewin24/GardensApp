@@ -19,8 +19,8 @@ let getJsonData = async () => {
 async function loadFields() {
     let jsonData = await getJsonData();//datos json
 
-    const selectedEntity = document.getElementById("entity").value;
-    const selectedField = document.getElementById("conditionField").value;
+    let selectedEntity;
+    let selectedProp;
     const conditionField = document.getElementById("conditionField");
     const conditionTypeSelector = document.getElementById("conditionType");
     const conditionValue = document.getElementById("conditionValue");
@@ -28,30 +28,38 @@ async function loadFields() {
 
     // Limpiar los campos existentes
     conditionField.innerHTML = "";
+    conditionField.innerHTML = "";
     conditionTypeSelector.innerHTML = "";
 
-    // Obtener campos y tipos de condición para la entidad seleccionada
-    const fields = jsonData.entities[selectedEntity].fields;
+    // cargar propiedades entidad segun entidad
+    const entityField = document.getElementById("entity");
+    entityField.addEventListener('input', () => {
+        selectedEntity = document.getElementById("entity").value;
+        const props = jsonData.entities[selectedEntity].fields;
+        propField.innerHTML = "";
+        props.map(field => {
+            conditionField.insertAdjacentHTML("afterbegin", `
+                <option value="${field.name}">${field.name}</option>
+                `);
+        });
+    })
+
+    // cargar condición
     const conditionTypes = jsonData.conditionTypes;
-
-    // Crear opciones de campo y agregarlas al contenedor
-    fields.map(field => {
-        conditionField.insertAdjacentHTML("afterbegin", `
-        <option value="${field.name}">${field.name}</option>
-        `);
-    });
-
-    // Presonalizar entrada segun el tipo de dato del campo de la entidad
-    const selectedFieldType = jsonData.entities[selectedEntity].fields[selectedField].type;
-    // Agregar un nuevo elemento input al contenedor
-    conditionValue.insertAdjacentHTML("afterbegin", `<input type="${selectedFieldType}" id="conditionValue" name="conditionValue">`);
-
-    // Crear opciones de tipo de condición y agregarlas al selector
     conditionTypes.forEach(type => {
         const option = document.createElement("option");
         option.value = type;
         option.text = type;
         conditionTypeSelector.insertAdjacentElement("afterbegin", option);
+    });
+
+    // Cargar input segun el tipo de dato del campo de la entidad
+    const propField = document.getElementById("conditionField");
+    propField.addEventListener('input', () => {
+        selectedProp = propField.value;
+        const selectedFieldType = jsonData.entities[selectedEntity].fields[selectedProp];
+        console.log(selectedFieldType);
+        conditionValue.insertAdjacentHTML("afterbegin", `<input type="${selectedFieldType}" id="conditionValue" name="conditionValue">`);
     });
 }
 
