@@ -1,0 +1,51 @@
+{
+    "entities": {
+        "customer": {
+            "fields": [
+                {
+                    "name": "CustomerID",
+                    "type": "string"
+                },
+                {
+                    "name": "CompanyName",
+                    "type": "string"
+                },
+                {
+                    "name": "ContactName",
+                    "type": "string"
+                },
+                {
+                    "name": "Country",
+                    "type": "string"
+                }
+            ]
+        },
+        "product": {
+            "fields": [
+                {
+                    "name": "ProductID",
+                    "type": "string"
+                },
+                {
+                    "name": "ProductName",
+                    "type": "string"
+                },
+                {
+                    "name": "UnitPrice",
+                    "type": "number"
+                },
+                {
+                    "name": "Category",
+                    "type": "string"
+                }
+            ]
+        }
+    },
+    "conditionTypes": [
+        "Equals",
+        "NotEquals",
+        "Contains",
+        "StartsWith",
+        "EndsWith"
+    ]
+}
