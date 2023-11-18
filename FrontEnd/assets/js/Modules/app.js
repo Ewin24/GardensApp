@@ -1,5 +1,5 @@
 let getJsonData = async () => {
-    const jsonUrl = '/assets/json/fields.json';
+    const jsonUrl = '/FrontEnd/assets/json/fields.json';
 
     try {
         const response = await fetch(jsonUrl);
@@ -57,25 +57,85 @@ async function loadFields() {
     const propField = document.getElementById("conditionField");
     propField.addEventListener('input', () => {
         selectedProp = propField.value;
-        const selectedFieldType = jsonData.entities[selectedEntity].fields[selectedProp];
-        console.log(selectedFieldType);
-        conditionValue.insertAdjacentHTML("afterbegin", `<input type="${selectedFieldType}" id="conditionValue" name="conditionValue">`);
+        let fields = jsonData.entities[selectedEntity].fields;
+        let type;
+        fields.forEach(element => {
+            if (element.name === selectedProp) {
+                type = element.type;
+            }
+        });
+        console.log(type);
+        conditionValue.type = type;
     });
 }
 
 function getQuery() {
     const selectedEntity = document.getElementById("entity").value;
-    const selectedFields = Array.from(document.querySelectorAll('input[name="fields"]:checked')).map(checkbox => checkbox.value);
-    const conditionField = document.getElementById("conditionField").value;
-    const conditionType = document.getElementById("conditionType").value;
+    const selectedProp = document.getElementById("conditionField").value;
+    const selectedType = document.getElementById("conditionType").value;
     const conditionValue = document.getElementById("conditionValue").value;
 
     // Puedes utilizar estos valores para construir tu consulta LINQ
     console.log(`Entidad seleccionada: ${selectedEntity}`);
-    console.log(`Campos seleccionados: ${selectedFields.join(", ")}`);
-    console.log(`Campo de Condición: ${conditionField}`);
-    console.log(`Tipo de Condición: ${conditionType}`);
+    console.log(`Campo de Condición: ${selectedProp}`);
+    console.log(`Tipo de Condición: ${selectedType}`);
     console.log(`Valor de Condición: ${conditionValue}`);
+
+
+    const miVariable =
+    {
+        selectedEntity,
+        selectedProp,
+        selectedType,
+        conditionValue
+    };
+
+    // let jsonstring = JSON.stringify(miVariable);
+
+    const endpointUrl = "http://127.0.0.1:5042/WeatherForecast/";
+
+    fetch(endpointUrl, {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ variableEnviada: miVariable }),
+    })
+        .then(response => {
+            if (!response.ok) {
+                throw new Error(`Error: ${response.status}`);
+            }
+            return response.json();
+        })
+        .then(data => {
+            // Realiza algo con la respuesta del servidor
+            console.log('Respuesta del servidor:', data);
+        })
+        .catch(error => {
+            console.error('Error al realizar la solicitud:', error);
+        });
 }
 
 loadFields();
+
+
+
+
+// [HttpPost]
+// public IActionResult Post([FromBody] JsonDocument data)
+// {
+//     try
+//     {
+//         string jsonstring = data.RootElement.ToString();
+//         Console.WriteLine(
+// jsonstring
+//         );
+//         return Ok(new { Mensaje = "Operación exitosa" });
+//     }
+//     catch (Exception ex)
+//     {
+//         return BadRequest(new { Mensaje = $"Error: {ex.Message}" });
+//     }
+// }
+// }
+// SE DEBE HACER LA CONFIGURACION DE CORS EN EL PROYECTO PARA QUE ADMITA EL ENDPOINT
