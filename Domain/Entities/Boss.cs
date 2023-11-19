@@ -13,5 +13,5 @@ public partial class Boss
 
     public int? Cellphone { get; set; }
 
-    public virtual ICollection<Employed> Employeds { get; set; } = new List<Employed>();
+    public virtual ICollection<Employee> Employees { get; set; } = new List<Employee>();
 }

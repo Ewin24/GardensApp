@@ -13,9 +13,5 @@ public partial class Proveedor
 
     public int? Cellphone { get; set; }
 
-    public int? IdCompaniesFk { get; set; }
-
-    public virtual Company? IdCompaniesFkNavigation { get; set; }
-
     public virtual ICollection<Product> Products { get; set; } = new List<Product>();
 }

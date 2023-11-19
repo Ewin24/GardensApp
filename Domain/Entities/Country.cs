@@ -9,9 +9,5 @@ public partial class Country
 
     public string? Name { get; set; }
 
-    public virtual ICollection<Client> Clients { get; set; } = new List<Client>();
-
-    public virtual ICollection<Office> Offices { get; set; } = new List<Office>();
-
     public virtual ICollection<State> States { get; set; } = new List<State>();
 }

@@ -15,7 +15,7 @@ public partial class Order
 
     public string Status { get; set; } = null!;
 
-    public string? Comments { get; set; }
+    public string Comments { get; set; } = null!;
 
     public int ClientCode { get; set; }
 

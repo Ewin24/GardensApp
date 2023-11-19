@@ -12,6 +12,4 @@ public partial class Company
     public string Descripcion { get; set; } = null!;
 
     public DateOnly CreationDate { get; set; }
-
-    public virtual ICollection<Proveedor> Proveedors { get; set; } = new List<Proveedor>();
 }
