@@ -6,7 +6,11 @@ using Domain.Entities;
 
 namespace Domain.Interfaces
 {
+<<<<<<< HEAD
     public interface ICountry:IGenericRepository<Country>
+=======
+    public interface ICountry : IGeneric<Country>
+>>>>>>> 6d8ff27 (feat: :construction: New entities and configurations)
     {
         
     }

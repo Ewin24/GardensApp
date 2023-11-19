@@ -3,9 +3,14 @@ using System.Collections.Generic;
 
 namespace Domain.Entities;
 
+<<<<<<< HEAD
 public class Order:BaseEntity
 { 
     public int OrderCode { get; set; }
+=======
+public partial class Order : BaseEntity
+{
+>>>>>>> 6d8ff27 (feat: :construction: New entities and configurations)
 
     public DateOnly OrderDate { get; set; }
 

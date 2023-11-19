@@ -3,9 +3,14 @@ using System.Collections.Generic;
 
 namespace Domain.Entities;
 
+<<<<<<< HEAD
 public  class OrderDetail :BaseEntity
 {
     public int OrderCode { get; set; }
+=======
+public partial class OrderDetail : BaseEntity
+{
+>>>>>>> 6d8ff27 (feat: :construction: New entities and configurations)
 
     public string ProductCode { get; set; } = null!;
 

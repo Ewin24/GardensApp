@@ -9,4 +9,8 @@ namespace Domain.Entities
     {
         public int Id { get; set; }
     }
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> 6d8ff27 (feat: :construction: New entities and configurations)
