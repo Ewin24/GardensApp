@@ -1,5 +1,9 @@
+<<<<<<< HEAD
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
+=======
+﻿Microsoft Visual Studio Solution File, Format Version 12.00
+>>>>>>> ce41551 (add sln)
 # Visual Studio Version 17
 VisualStudioVersion = 17.0.31903.59
 MinimumVisualStudioVersion = 10.0.40219.1
@@ -37,4 +41,8 @@ Global
 		{2FE57872-271F-47EA-AEC9-A823F564D164}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{2FE57872-271F-47EA-AEC9-A823F564D164}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
+<<<<<<< HEAD
 EndGlobal
+=======
+EndGlobal
+>>>>>>> ce41551 (add sln)
