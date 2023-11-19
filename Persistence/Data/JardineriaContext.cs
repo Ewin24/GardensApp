@@ -8,9 +8,6 @@ namespace Persistence.Data;
 
 public partial class JardineriaContext : DbContext
 {
-    public JardineriaContext()
-    {
-    }
 
     public JardineriaContext(DbContextOptions<JardineriaContext> options)
         : base(options)
@@ -48,13 +45,13 @@ public partial class JardineriaContext : DbContext
     public virtual DbSet<Proveedor> Providers { get; set; }
 
     public virtual DbSet<State> States { get; set; }
-    public virtual DbSet<User> Users {get; set;}
+    public virtual DbSet<User> Users { get; set; }
 
-   protected override void OnModelCreating(ModelBuilder modelBuilder)
-        {
-            base.OnModelCreating(modelBuilder);
-            modelBuilder.ApplyConfigurationsFromAssembly(Assembly.GetExecutingAssembly());
-        }
+    protected override void OnModelCreating(ModelBuilder modelBuilder)
+    {
+        base.OnModelCreating(modelBuilder);
+        modelBuilder.ApplyConfigurationsFromAssembly(Assembly.GetExecutingAssembly());
+    }
 
-    partial void OnModelCreatingPartial(ModelBuilder modelBuilder);
+
 }

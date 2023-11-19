@@ -7,6 +7,6 @@ namespace API.Dto
 {
     public class ProductLineDto
     {
-        
+        public int Id { get; set; }
     }
 }

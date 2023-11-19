@@ -17,6 +17,8 @@ public class UnitOfWork : IUnitOfWork, IDisposable
     }
     private IBoss _bosses;
     private ICity _cities;
+
+    private IClient _clients;
     private IContact _contacts;
     private ICountry _countries;
     private IEmployee _employee;
@@ -61,6 +63,17 @@ public class UnitOfWork : IUnitOfWork, IDisposable
                 _countries = new CountryRepository(_context);
             }
             return _countries;
+        }
+    }
+
+    public IClient Clients {
+        get
+        {
+            if (_clients == null)
+            {
+                _clients = new ClientRepository(_context);
+            }
+            return _clients;
         }
     }
 
@@ -131,7 +144,7 @@ public class UnitOfWork : IUnitOfWork, IDisposable
             return _orderDetails;
         }
     }
-    public IPayment Payment 
+    public IPayment Payment
     {
         get
         {

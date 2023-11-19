@@ -7,6 +7,6 @@ namespace API.Dto
 {
     public class LocationClientDto
     {
-        
+        public int Id { get; set; }
     }
 }

@@ -7,6 +7,6 @@ namespace API.Dto
 {
     public class EmployeeDto
     {
-        
+        public int Id { get; set; }
     }
 }

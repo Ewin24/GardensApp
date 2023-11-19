@@ -7,6 +7,6 @@ namespace API.Dto
 {
     public class PaymentDto
     {
-        
+        public string Id { get; set; }
     }
 }

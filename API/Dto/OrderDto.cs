@@ -7,6 +7,6 @@ namespace API.Dto
 {
     public class OrderDto
     {
-        
+        public int Id { get; set; }
     }
 }

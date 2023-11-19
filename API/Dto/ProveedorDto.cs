@@ -7,6 +7,6 @@ namespace API.Dto
 {
     public class ProveedorDto
     {
-        
+        public int Id { get; set; }
     }
 }
