@@ -7,8 +7,8 @@ using Domain.Entities;
 
 namespace Domain.Interfaces
 {
-    public interface IContact : IGeneric<Contact>
-    {
+<<<<<<< HEAD
+    public interface IContact:IGenericRepository<Contact>
+=======
         
-    }
 }

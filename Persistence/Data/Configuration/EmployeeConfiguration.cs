@@ -50,7 +50,11 @@ namespace Persistence.Data.Configuration
                 .OnDelete(DeleteBehavior.ClientSetNull)
                 .HasConstraintName("Fk_IdBossFk");
 
+<<<<<<< HEAD
+            entity.HasOne(d => d.OfficeCodeNavigation).WithMany(p => p.Employees)
+=======
             builder.HasOne(d => d.OfficeCodeNavigation).WithMany(p => p.Employees)
+>>>>>>> origin/main
                 .HasForeignKey(d => d.OfficeCode)
                 .OnDelete(DeleteBehavior.ClientSetNull)
                 .HasConstraintName("Fk_OfficeCodeFk");

@@ -20,11 +20,19 @@ public partial class Product : BaseEntityString
 
     public decimal SellingPrice { get; set; }
 
+<<<<<<< HEAD
+    public decimal? SupplierPrice { get; set; }
+
+    public int? IdProveedorFk { get; set; }
+
+    public virtual Proveedor? IdProveedorFkNavigation { get; set; }
+=======
     public decimal SupplierPrice { get; set; }
 
     public int IdProviderFk { get; set; }
 
     public virtual Proveedor IdProviderFkNavigation { get; set; }
+>>>>>>> origin/main
 
     public virtual ICollection<OrderDetail> OrderDetails { get; set; } = new List<OrderDetail>();
 
