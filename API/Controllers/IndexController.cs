@@ -8,20 +8,26 @@ using Microsoft.Extensions.Logging;
 
 namespace API.Controllers
 {
-    [ApiController]
     [Route("[controller]")]
-    public class BaseController : Controller
+    public class IndexController : Controller
     {
-        private readonly ILogger<BaseController> _logger;
+        private readonly ILogger<IndexController> _logger;
 
-        public BaseController(ILogger<BaseController> logger)
+        public IndexController(ILogger<IndexController> logger)
         {
             _logger = logger;
         }
 
+        [HttpGet]
+        public ContentResult ConfirmVerify()
+        {
+            var html = System.IO.File.ReadAllText("../../index.html");
+            
+            return base.Content(html, "text/html");
+        }
+
         public IActionResult Index()
         {
-            
             return View();
         }
 
