@@ -5,7 +5,11 @@
   </ItemGroup>
 
   <ItemGroup>
+<<<<<<< HEAD
     <PackageReference Include="Microsoft.EntityFrameworkCore" Version="7.0.11" />
+=======
+    <PackageReference Include="Microsoft.EntityFrameworkCore" Version="7.0.12" />
+>>>>>>> ce41551957fea3c94be6e3bf99403f9e4982f068
     <PackageReference Include="Pomelo.EntityFrameworkCore.MySql" Version="7.0.0" />
   </ItemGroup>
 

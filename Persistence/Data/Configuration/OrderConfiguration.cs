@@ -11,6 +11,7 @@ namespace Persistence.Data.Configuration
     public class OrderConfiguration : IEntityTypeConfiguration<Order>
     {
 <<<<<<< HEAD
+<<<<<<< HEAD
         public void Configure(EntityTypeBuilder<Order>entity)
         {
             entity.HasKey(e => e.OrderCode).HasName("PRIMARY");
@@ -35,6 +36,8 @@ namespace Persistence.Data.Configuration
 
             entity.HasOne(d => d.ClientCodeNavigation).WithMany(p => p.Orders)
 =======
+=======
+>>>>>>> ce41551957fea3c94be6e3bf99403f9e4982f068
         public void Configure(EntityTypeBuilder<Order> builder)
         {
             builder.HasKey(e => e.Id).HasName("PRIMARY");
@@ -58,7 +61,10 @@ namespace Persistence.Data.Configuration
                 .HasColumnName("status");
 
             builder.HasOne(d => d.ClientCodeNavigation).WithMany(p => p.Orders)
+<<<<<<< HEAD
 >>>>>>> 6d8ff27 (feat: :construction: New entities and configurations)
+=======
+>>>>>>> ce41551957fea3c94be6e3bf99403f9e4982f068
                 .HasForeignKey(d => d.ClientCode)
                 .OnDelete(DeleteBehavior.ClientSetNull)
                 .HasConstraintName("Fk_client_code");

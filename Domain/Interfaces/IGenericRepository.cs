@@ -18,4 +18,8 @@ namespace Domain.Interfaces
         void RemoveRange(IEnumerable<T> entities);
         void Update(T entity);
     }
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> ce41551957fea3c94be6e3bf99403f9e4982f068

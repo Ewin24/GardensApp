@@ -11,6 +11,7 @@ namespace Persistence.Data.Configuration
     public class ClientConfiguration : IEntityTypeConfiguration<Client>
     {
 <<<<<<< HEAD
+<<<<<<< HEAD
         public void Configure(EntityTypeBuilder<Client> entity)
         {
             entity.HasKey(e => e.ClientCode).HasName("PRIMARY");
@@ -41,6 +42,8 @@ namespace Persistence.Data.Configuration
                 .HasForeignKey(d => d.IdEmployeeFk)
                 .HasConstraintName("FK_Employee_FK");
 =======
+=======
+>>>>>>> ce41551957fea3c94be6e3bf99403f9e4982f068
         public void Configure(EntityTypeBuilder<Client> builder)
         {
             builder.HasKey(e => e.Id).HasName("PRIMARY");
@@ -71,7 +74,10 @@ namespace Persistence.Data.Configuration
                 .HasForeignKey(d => d.IdEmployeeFk)
                 .HasConstraintName("FK_Employee_FK");
 
+<<<<<<< HEAD
 >>>>>>> 6d8ff27 (feat: :construction: New entities and configurations)
+=======
+>>>>>>> ce41551957fea3c94be6e3bf99403f9e4982f068
         }
     }
 }

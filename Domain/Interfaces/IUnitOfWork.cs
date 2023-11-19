@@ -3,7 +3,10 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
+=======
+>>>>>>> ce41551957fea3c94be6e3bf99403f9e4982f068
 using Domain.Entities;
 
 namespace Domain.Interfaces;
@@ -27,6 +30,7 @@ namespace Domain.Interfaces;
         
         Task<int> SaveAsync();
     }
+<<<<<<< HEAD
 >>>>>>> 6d8ff27 (feat: :construction: New entities and configurations)
 
 namespace Domain.Interfaces
@@ -53,3 +57,6 @@ namespace Domain.Interfaces
         Task<int> SaveAsync();
     }
 }
+=======
+
+>>>>>>> ce41551957fea3c94be6e3bf99403f9e4982f068

@@ -11,6 +11,7 @@ namespace Persistence.Data.Configuration
     public class OfficeConfiguration : IEntityTypeConfiguration<Office>
     {
 <<<<<<< HEAD
+<<<<<<< HEAD
         public void Configure(EntityTypeBuilder<Office> entity)
         {
             entity.HasKey(e => e.OfficeCode).HasName("PRIMARY");
@@ -27,6 +28,8 @@ namespace Persistence.Data.Configuration
                 .HasMaxLength(10)
                 .HasColumnName("postal_code");
 =======
+=======
+>>>>>>> ce41551957fea3c94be6e3bf99403f9e4982f068
         public void Configure(EntityTypeBuilder<Office> builder)
         {
             builder.HasKey(e => e.Id).HasName("PRIMARY");
@@ -47,7 +50,10 @@ namespace Persistence.Data.Configuration
                 .HasForeignKey(d => d.LocationOfficeFk)
                 .OnDelete(DeleteBehavior.ClientSetNull)
                 .HasConstraintName("fk_office_location_customer_copy11");
+<<<<<<< HEAD
 >>>>>>> 6d8ff27 (feat: :construction: New entities and configurations)
+=======
+>>>>>>> ce41551957fea3c94be6e3bf99403f9e4982f068
         }
     }
 }

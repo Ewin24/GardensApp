@@ -7,6 +7,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 namespace Persistence.Data.Configuration
 {
     public class PaymentConfiguration : IEntityTypeConfiguration<Payment>
@@ -39,6 +40,8 @@ namespace Persistence.Data.Configuration
     }
 }
 =======
+=======
+>>>>>>> ce41551957fea3c94be6e3bf99403f9e4982f068
 namespace Persistence.Data.Configuration;
 
 public class PaymentConfiguration : IEntityTypeConfiguration<Payment>
@@ -69,4 +72,7 @@ public class PaymentConfiguration : IEntityTypeConfiguration<Payment>
             .HasConstraintName("Fk_cliente_code");
     }
 }
+<<<<<<< HEAD
 >>>>>>> 6d8ff27 (feat: :construction: New entities and configurations)
+=======
+>>>>>>> ce41551957fea3c94be6e3bf99403f9e4982f068

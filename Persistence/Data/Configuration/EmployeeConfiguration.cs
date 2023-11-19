@@ -11,6 +11,7 @@ namespace Persistence.Data.Configuration
     public class EmployeeConfiguration : IEntityTypeConfiguration<Employee>
     {
 <<<<<<< HEAD
+<<<<<<< HEAD
         public void Configure(EntityTypeBuilder<Employee> entity)
         {
             entity.HasKey(e => e.EmployeeCode).HasName("PRIMARY");
@@ -48,6 +49,8 @@ namespace Persistence.Data.Configuration
 
             entity.HasOne(d => d.IdBossFkNavigation).WithMany(p => p.Employees)
 =======
+=======
+>>>>>>> ce41551957fea3c94be6e3bf99403f9e4982f068
         public void Configure(EntityTypeBuilder<Employee> builder)
         {
             builder.HasKey(e => e.Id).HasName("PRIMARY");
@@ -84,7 +87,10 @@ namespace Persistence.Data.Configuration
                 .HasColumnName("position");
 
             builder.HasOne(d => d.IdBossFkNavigation).WithMany(p => p.Employees)
+<<<<<<< HEAD
 >>>>>>> 6d8ff27 (feat: :construction: New entities and configurations)
+=======
+>>>>>>> ce41551957fea3c94be6e3bf99403f9e4982f068
                 .HasForeignKey(d => d.IdBossFk)
                 .OnDelete(DeleteBehavior.ClientSetNull)
                 .HasConstraintName("Fk_IdBossFk");
@@ -93,7 +99,11 @@ namespace Persistence.Data.Configuration
             entity.HasOne(d => d.OfficeCodeNavigation).WithMany(p => p.Employees)
 =======
             builder.HasOne(d => d.OfficeCodeNavigation).WithMany(p => p.Employees)
+<<<<<<< HEAD
 >>>>>>> 6d8ff27 (feat: :construction: New entities and configurations)
+=======
+>>>>>>> origin/main
+>>>>>>> ce41551957fea3c94be6e3bf99403f9e4982f068
                 .HasForeignKey(d => d.OfficeCode)
                 .OnDelete(DeleteBehavior.ClientSetNull)
                 .HasConstraintName("Fk_OfficeCodeFk");
