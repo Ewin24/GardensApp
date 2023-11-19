@@ -3,9 +3,8 @@ using System.Collections.Generic;
 
 namespace Domain.Entities;
 
-public class Contact:BaseEntity
+public class Contact : BaseEntity
 {
-   
 
     public string ContactName { get; set; } = null!;
 
@@ -16,6 +15,4 @@ public class Contact:BaseEntity
     public string Fax { get; set; } = null!;
 
     public virtual ICollection<Client> Clients { get; set; } = new List<Client>();
-
-    public virtual ICollection<TypeContact> TypeContacts { get; set; } = new List<TypeContact>();
 }

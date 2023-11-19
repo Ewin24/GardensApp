@@ -10,29 +10,29 @@ namespace Persistence.Data.Configuration
 {
     public class OrderConfiguration : IEntityTypeConfiguration<Order>
     {
-        public void Configure(EntityTypeBuilder<Order>entity)
+        public void Configure(EntityTypeBuilder<Order> builder)
         {
-            entity.HasKey(e => e.OrderCode).HasName("PRIMARY");
+            builder.HasKey(e => e.Id).HasName("PRIMARY");
 
-            entity.ToTable("orders");
+            builder.ToTable("orders");
 
-            entity.HasIndex(e => e.ClientCode, "Fk_client_code");
+            builder.HasIndex(e => e.ClientCode, "Fk_client_code");
 
-            entity.Property(e => e.OrderCode)
+            builder.Property(e => e.Id)
                 .ValueGeneratedNever()
                 .HasColumnName("order_code");
-            entity.Property(e => e.ClientCode).HasColumnName("client_code");
-            entity.Property(e => e.Comments)
+            builder.Property(e => e.ClientCode).HasColumnName("client_code");
+            builder.Property(e => e.Comments)
                 .HasColumnType("text")
                 .HasColumnName("comments");
-            entity.Property(e => e.DeliveryDate).HasColumnName("delivery_date");
-            entity.Property(e => e.ExpectedDate).HasColumnName("expected_date");
-            entity.Property(e => e.OrderDate).HasColumnName("order_date");
-            entity.Property(e => e.Status)
+            builder.Property(e => e.DeliveryDate).HasColumnName("delivery_date");
+            builder.Property(e => e.ExpectedDate).HasColumnName("expected_date");
+            builder.Property(e => e.OrderDate).HasColumnName("order_date");
+            builder.Property(e => e.Status)
                 .HasMaxLength(15)
                 .HasColumnName("status");
 
-            entity.HasOne(d => d.ClientCodeNavigation).WithMany(p => p.Orders)
+            builder.HasOne(d => d.ClientCodeNavigation).WithMany(p => p.Orders)
                 .HasForeignKey(d => d.ClientCode)
                 .OnDelete(DeleteBehavior.ClientSetNull)
                 .HasConstraintName("Fk_client_code");

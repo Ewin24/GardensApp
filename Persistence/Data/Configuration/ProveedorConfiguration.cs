@@ -10,16 +10,16 @@ namespace Persistence.Data.Configuration
 {
     public class ProveedorConfiguration : IEntityTypeConfiguration<Proveedor>
     {
-        public void Configure(EntityTypeBuilder<Proveedor> entity)
+        public void Configure(EntityTypeBuilder<Proveedor> builder)
         {
-            entity.HasKey(e => e.Id).HasName("PRIMARY");
+            builder.HasKey(e => e.Id).HasName("PRIMARY");
 
-            entity.ToTable("proveedor");
+            builder.ToTable("provider");
 
-            entity.Property(e => e.Id).HasColumnName("id");
-            entity.Property(e => e.Cellphone).HasColumnName("cellphone");
-            entity.Property(e => e.DentificationArd).HasColumnName("dentification_ard");
-            entity.Property(e => e.Name)
+            builder.Property(e => e.Id).HasColumnName("id");
+            builder.Property(e => e.Cellphone).HasColumnName("cellphone");
+            builder.Property(e => e.DentificationArd).HasColumnName("dentification_ard");
+            builder.Property(e => e.Name)
                 .HasMaxLength(50)
                 .HasColumnName("name");
         }

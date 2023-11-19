@@ -10,47 +10,47 @@ namespace Persistence.Data.Configuration
 {
     public class ProductConfiguration : IEntityTypeConfiguration<Product>
     {
-        public void Configure(EntityTypeBuilder<Product> entity)
+        public void Configure(EntityTypeBuilder<Product> builder)
         {
-            entity.HasKey(e => e.ProductCode).HasName("PRIMARY");
+            builder.HasKey(e => e.Id).HasName("PRIMARY");
 
-            entity.ToTable("product");
+            builder.ToTable("product");
 
-            entity.HasIndex(e => e.IdProveedorFk, "Fk_IdProveedorFk");
+            builder.HasIndex(e => e.IdProviderFk, "Fk_IdproviderFk");
 
-            entity.HasIndex(e => e.ProductLine, "Fk_product_line");
+            builder.HasIndex(e => e.ProductLine, "Fk_product_line");
 
-            entity.Property(e => e.ProductCode)
+            builder.Property(e => e.ProductCode)
                 .HasMaxLength(15)
                 .HasColumnName("product_code");
-            entity.Property(e => e.Description)
+            builder.Property(e => e.Description)
                 .HasColumnType("text")
                 .HasColumnName("description");
-            entity.Property(e => e.Dimensions)
+            builder.Property(e => e.Dimensions)
                 .HasMaxLength(25)
                 .HasColumnName("dimensions");
-            entity.Property(e => e.Name)
+            builder.Property(e => e.Name)
                 .HasMaxLength(70)
                 .HasColumnName("name");
-            entity.Property(e => e.ProductLine)
+            builder.Property(e => e.ProductLine)
                 .HasMaxLength(50)
                 .HasColumnName("product_line");
-            entity.Property(e => e.SellingPrice)
+            builder.Property(e => e.SellingPrice)
                 .HasPrecision(15, 2)
                 .HasColumnName("selling_price");
-            entity.Property(e => e.StockQuantity).HasColumnName("stock_quantity");
-            entity.Property(e => e.Supplier)
+            builder.Property(e => e.StockQuantity).HasColumnName("stock_quantity");
+            builder.Property(e => e.Supplier)
                 .HasMaxLength(50)
                 .HasColumnName("supplier");
-            entity.Property(e => e.SupplierPrice)
+            builder.Property(e => e.SupplierPrice)
                 .HasPrecision(15, 2)
                 .HasColumnName("supplier_price");
 
-            entity.HasOne(d => d.IdProveedorFkNavigation).WithMany(p => p.Products)
-                .HasForeignKey(d => d.IdProveedorFk)
-                .HasConstraintName("Fk_IdProveedorFk");
+            builder.HasOne(d => d.IdProviderFkNavigation).WithMany(p => p.Products)
+                .HasForeignKey(d => d.IdProviderFk)
+                .HasConstraintName("Fk_IdproviderFk");
 
-            entity.HasOne(d => d.ProductLineNavigation).WithMany(p => p.Products)
+            builder.HasOne(d => d.ProductLineNavigation).WithMany(p => p.Products)
                 .HasForeignKey(d => d.ProductLine)
                 .OnDelete(DeleteBehavior.ClientSetNull)
                 .HasConstraintName("Fk_product_line");

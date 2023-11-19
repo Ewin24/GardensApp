@@ -10,20 +10,18 @@ namespace Persistence.Data.Configuration
 {
     public class StateConfiguration : IEntityTypeConfiguration<State>
     {
-        public void Configure(EntityTypeBuilder<State> entity)
+        public void Configure(EntityTypeBuilder<State> builder)
         {
-            entity.HasKey(e => e.Id).HasName("PRIMARY");
+            builder.ToTable("state");
 
-            entity.ToTable("state");
+            builder.HasIndex(e => e.IdCountryFk, "Fk_IdCountry");
 
-            entity.HasIndex(e => e.IdCountryFk, "Fk_IdCountry");
-
-            entity.Property(e => e.Id).HasColumnName("id");
-            entity.Property(e => e.Name)
+            builder.Property(e => e.Id).HasColumnName("id");
+            builder.Property(e => e.Name)
                 .HasMaxLength(50)
                 .HasColumnName("name");
 
-            entity.HasOne(d => d.IdCountryFkNavigation).WithMany(p => p.States)
+            builder.HasOne(d => d.IdCountryFkNavigation).WithMany(p => p.States)
                 .HasForeignKey(d => d.IdCountryFk)
                 .HasConstraintName("Fk_IdCountry");
         }

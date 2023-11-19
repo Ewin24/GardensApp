@@ -10,14 +10,14 @@ namespace Persistence.Data.Configuration
 {
     public class CountryConfiguration : IEntityTypeConfiguration<Country>
     {
-        public void Configure(EntityTypeBuilder<Country> entity)
+        public void Configure(EntityTypeBuilder<Country> builder)
         {
-             entity.HasKey(e => e.Id).HasName("PRIMARY");
+            builder.HasKey(e => e.Id).HasName("PRIMARY");
 
-            entity.ToTable("country");
+            builder.ToTable("country");
 
-            entity.Property(e => e.Id).HasColumnName("id");
-            entity.Property(e => e.Name)
+            builder.Property(e => e.Id).HasColumnName("id");
+            builder.Property(e => e.Name)
                 .HasMaxLength(50)
                 .HasColumnName("name");
         }

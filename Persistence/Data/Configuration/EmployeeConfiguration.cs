@@ -10,47 +10,51 @@ namespace Persistence.Data.Configuration
 {
     public class EmployeeConfiguration : IEntityTypeConfiguration<Employee>
     {
-        public void Configure(EntityTypeBuilder<Employee> entity)
+        public void Configure(EntityTypeBuilder<Employee> builder)
         {
-            entity.HasKey(e => e.EmployeeCode).HasName("PRIMARY");
+            builder.HasKey(e => e.Id).HasName("PRIMARY");
 
-            entity.ToTable("employee");
+            builder.ToTable("employee");
 
-            entity.HasIndex(e => e.IdBossFk, "Fk_IdBossFk");
+            builder.HasIndex(e => e.IdBossFk, "Fk_IdBossFk");
 
-            entity.HasIndex(e => e.OfficeCode, "Fk_OfficeCodeFk");
+            builder.HasIndex(e => e.OfficeCode, "Fk_OfficeCodeFk");
 
-            entity.Property(e => e.EmployeeCode)
+            builder.Property(e => e.Id)
                 .ValueGeneratedNever()
                 .HasColumnName("employee_code");
-            entity.Property(e => e.Email)
+            builder.Property(e => e.Email)
                 .HasMaxLength(100)
                 .HasColumnName("email");
-            entity.Property(e => e.Extension)
+            builder.Property(e => e.Extension)
                 .HasMaxLength(10)
                 .HasColumnName("extension");
-            entity.Property(e => e.FirstName)
+            builder.Property(e => e.FirstName)
                 .HasMaxLength(50)
                 .HasColumnName("first_name");
-            entity.Property(e => e.LastName1)
+            builder.Property(e => e.LastName1)
                 .HasMaxLength(50)
                 .HasColumnName("last_name1");
-            entity.Property(e => e.LastName2)
+            builder.Property(e => e.LastName2)
                 .HasMaxLength(50)
                 .HasColumnName("last_name2");
-            entity.Property(e => e.OfficeCode)
+            builder.Property(e => e.OfficeCode)
                 .HasMaxLength(10)
                 .HasColumnName("office_code");
-            entity.Property(e => e.Position)
+            builder.Property(e => e.Position)
                 .HasMaxLength(50)
                 .HasColumnName("position");
 
-            entity.HasOne(d => d.IdBossFkNavigation).WithMany(p => p.Employees)
+            builder.HasOne(d => d.IdBossFkNavigation).WithMany(p => p.Employees)
                 .HasForeignKey(d => d.IdBossFk)
                 .OnDelete(DeleteBehavior.ClientSetNull)
                 .HasConstraintName("Fk_IdBossFk");
 
+<<<<<<< HEAD
             entity.HasOne(d => d.OfficeCodeNavigation).WithMany(p => p.Employees)
+=======
+            builder.HasOne(d => d.OfficeCodeNavigation).WithMany(p => p.Employees)
+>>>>>>> origin/main
                 .HasForeignKey(d => d.OfficeCode)
                 .OnDelete(DeleteBehavior.ClientSetNull)
                 .HasConstraintName("Fk_OfficeCodeFk");
