@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 namespace Domain.Entities;
 
-public partial class Office
+public  class Office :BaseEntity
 {
     public string OfficeCode { get; set; } = null!;
 

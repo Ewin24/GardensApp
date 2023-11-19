@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 namespace Domain.Entities;
 
-public partial class Payment
+public class Payment :BaseEntity
 {
     public string PaymentMethod { get; set; } = null!;
 

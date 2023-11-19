@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 namespace Domain.Entities;
 
-public partial class ProductLine
+public class ProductLine :BaseEntity
 {
     public string ProductLine1 { get; set; } = null!;
 
