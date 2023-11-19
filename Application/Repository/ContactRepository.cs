@@ -10,8 +10,10 @@ namespace Application.Repository
 {
     public class ContactRepository : GenericRepository<Contact>, IContact
     {
+        private readonly GardenApiContext _context;
         public ContactRepository(GardenApiContext context) : base(context)
         {
+            context = _context;
         }
     }
 }

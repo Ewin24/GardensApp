@@ -10,8 +10,11 @@ namespace Application.Repository
 {
     public class ClienteRepository : GenericRepository<Client>, IClient
     {
+        private readonly GardenApiContext _context;
+        
         public ClienteRepository(GardenApiContext context) : base(context)
         {
+            context = _context;
         }
     }
 }

@@ -10,8 +10,10 @@ namespace Application.Repository
 {
     public class OfficeRepository : GenericRepository<Office>, IOffice
     {
+        private readonly GardenApiContext _context;
         public OfficeRepository(GardenApiContext context) : base(context)
         {
+            context = _context;
         }
     }
 }
