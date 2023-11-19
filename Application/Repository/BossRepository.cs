@@ -10,8 +10,11 @@ namespace Application.Repository
 {
     public class BossRepository : GenericRepository<Boss>, IBoss
     {
+
+        private readonly GardenApiContext _context;
         public BossRepository(GardenApiContext context) : base(context)
         {
+            context = _context;
         }
     }
 }

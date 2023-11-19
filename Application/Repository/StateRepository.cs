@@ -10,8 +10,10 @@ namespace Application.Repository
 {
     public class StateRepository : GenericRepository<State>, IState
     {
+        private readonly GardenApiContext _context;
         public StateRepository(GardenApiContext context) : base(context)
         {
+            context = _context;
         }
     }
 }

@@ -10,8 +10,10 @@ namespace Application.Repository
 {
     public class PaymentRepository : GenericRepository<Payment>, IPayment
     {
+        private readonly GardenApiContext _context;
         public PaymentRepository(GardenApiContext context) : base(context)
         {
+            context = _context;
         }
     }
 }

@@ -10,8 +10,10 @@ namespace Application.Repository
 {
     public class ProveedorRepository : GenericRepository<Proveedor>, IProveedor
     {
+        private readonly GardenApiContext _context;
         public ProveedorRepository(GardenApiContext context) : base(context)
         {
+            context = _context;
         }
     }
 }

@@ -10,8 +10,12 @@ namespace Application.Repository
 {
     public class CityRepository : GenericRepository<City>, ICity
     {
+        
+        private readonly GardenApiContext _context;
+       
         public CityRepository(GardenApiContext context) : base(context)
         {
+            context = _context;
         }
     }
 }

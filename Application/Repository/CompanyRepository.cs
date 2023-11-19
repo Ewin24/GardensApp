@@ -10,8 +10,10 @@ namespace Application.Repository
 {
     public class CompanyRepository : GenericRepository<Company>, ICompany
     {
+        private readonly GardenApiContext _context;
         public CompanyRepository(GardenApiContext context) : base(context)
         {
+            context = _context;
         }
     }
 }

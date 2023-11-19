@@ -31,10 +31,7 @@ namespace Application.Repository
             return _context.Set<T>().Where(expression);
         }
 
-     /*    public IEnumerable<T> Find(System.Linq.Expressions.Expression<Func<T, bool>> expression)
-        {
-            throw new NotImplementedException();
-        } */
+        
 
         public virtual async Task<IEnumerable<T>> GetAllAsync()
         {

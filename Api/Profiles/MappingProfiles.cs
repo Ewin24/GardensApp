@@ -30,6 +30,7 @@ namespace Api.Profiles
             CreateMap<Proveedor,ProveedorDto>().ReverseMap();
             CreateMap<State,StateDto>().ReverseMap();
             CreateMap<TypeContact,TypeContactDto>().ReverseMap();
+            
         }
     }
 }

@@ -10,8 +10,10 @@ namespace Application.Repository
 {
     public class OrderDetailRepository : GenericRepository<OrderDetail>, IOrderDetail
     {
+        private readonly GardenApiContext _context;
         public OrderDetailRepository(GardenApiContext context) : base(context)
         {
+            context = _context;
         }
     }
 }
