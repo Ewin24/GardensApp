@@ -24,7 +24,12 @@ namespace API.Profiles
             CreateMap<Office, OfficeDto>().ReverseMap();
             CreateMap<Order, OrderDto>().ReverseMap();
             CreateMap<OrderDetail, OrderDetailDto>().ReverseMap();
-
+            CreateMap<Payment, PaymentDto>().ReverseMap();
+            CreateMap<Product, ProductDto>().ReverseMap();
+            CreateMap<ProductLine, ProductLineDto>().ReverseMap();
+            CreateMap<Proveedor, ProveedorDto>().ReverseMap();
+            CreateMap<State, StateDto>().ReverseMap();
+            CreateMap<User, UserDto>().ReverseMap();
         }
     }
 }

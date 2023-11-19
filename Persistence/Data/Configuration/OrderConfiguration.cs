@@ -10,34 +10,6 @@ namespace Persistence.Data.Configuration
 {
     public class OrderConfiguration : IEntityTypeConfiguration<Order>
     {
-<<<<<<< HEAD
-<<<<<<< HEAD
-        public void Configure(EntityTypeBuilder<Order>entity)
-        {
-            entity.HasKey(e => e.OrderCode).HasName("PRIMARY");
-
-            entity.ToTable("orders");
-
-            entity.HasIndex(e => e.ClientCode, "Fk_client_code");
-
-            entity.Property(e => e.OrderCode)
-                .ValueGeneratedNever()
-                .HasColumnName("order_code");
-            entity.Property(e => e.ClientCode).HasColumnName("client_code");
-            entity.Property(e => e.Comments)
-                .HasColumnType("text")
-                .HasColumnName("comments");
-            entity.Property(e => e.DeliveryDate).HasColumnName("delivery_date");
-            entity.Property(e => e.ExpectedDate).HasColumnName("expected_date");
-            entity.Property(e => e.OrderDate).HasColumnName("order_date");
-            entity.Property(e => e.Status)
-                .HasMaxLength(15)
-                .HasColumnName("status");
-
-            entity.HasOne(d => d.ClientCodeNavigation).WithMany(p => p.Orders)
-=======
-=======
->>>>>>> ce41551957fea3c94be6e3bf99403f9e4982f068
         public void Configure(EntityTypeBuilder<Order> builder)
         {
             builder.HasKey(e => e.Id).HasName("PRIMARY");
@@ -61,10 +33,6 @@ namespace Persistence.Data.Configuration
                 .HasColumnName("status");
 
             builder.HasOne(d => d.ClientCodeNavigation).WithMany(p => p.Orders)
-<<<<<<< HEAD
->>>>>>> 6d8ff27 (feat: :construction: New entities and configurations)
-=======
->>>>>>> ce41551957fea3c94be6e3bf99403f9e4982f068
                 .HasForeignKey(d => d.ClientCode)
                 .OnDelete(DeleteBehavior.ClientSetNull)
                 .HasConstraintName("Fk_client_code");

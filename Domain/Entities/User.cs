@@ -7,7 +7,7 @@ namespace Domain.Entities
 {
     public class User : BaseEntity
     {
-        public string Name;
-        public string password;
+        public string email {get; set;}
+        public string PasswordHash {get; set;}
     }
 }

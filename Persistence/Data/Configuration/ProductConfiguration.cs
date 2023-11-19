@@ -10,52 +10,6 @@ namespace Persistence.Data.Configuration
 {
     public class ProductConfiguration : IEntityTypeConfiguration<Product>
     {
-<<<<<<< HEAD
-<<<<<<< HEAD
-        public void Configure(EntityTypeBuilder<Product> entity)
-        {
-            entity.HasKey(e => e.ProductCode).HasName("PRIMARY");
-
-            entity.ToTable("product");
-
-            entity.HasIndex(e => e.IdProveedorFk, "Fk_IdProveedorFk");
-
-            entity.HasIndex(e => e.ProductLine, "Fk_product_line");
-
-            entity.Property(e => e.ProductCode)
-                .HasMaxLength(15)
-                .HasColumnName("product_code");
-            entity.Property(e => e.Description)
-                .HasColumnType("text")
-                .HasColumnName("description");
-            entity.Property(e => e.Dimensions)
-                .HasMaxLength(25)
-                .HasColumnName("dimensions");
-            entity.Property(e => e.Name)
-                .HasMaxLength(70)
-                .HasColumnName("name");
-            entity.Property(e => e.ProductLine)
-                .HasMaxLength(50)
-                .HasColumnName("product_line");
-            entity.Property(e => e.SellingPrice)
-                .HasPrecision(15, 2)
-                .HasColumnName("selling_price");
-            entity.Property(e => e.StockQuantity).HasColumnName("stock_quantity");
-            entity.Property(e => e.Supplier)
-                .HasMaxLength(50)
-                .HasColumnName("supplier");
-            entity.Property(e => e.SupplierPrice)
-                .HasPrecision(15, 2)
-                .HasColumnName("supplier_price");
-
-            entity.HasOne(d => d.IdProveedorFkNavigation).WithMany(p => p.Products)
-                .HasForeignKey(d => d.IdProveedorFk)
-                .HasConstraintName("Fk_IdProveedorFk");
-
-            entity.HasOne(d => d.ProductLineNavigation).WithMany(p => p.Products)
-=======
-=======
->>>>>>> ce41551957fea3c94be6e3bf99403f9e4982f068
         public void Configure(EntityTypeBuilder<Product> builder)
         {
             builder.HasKey(e => e.Id).HasName("PRIMARY");
@@ -97,10 +51,6 @@ namespace Persistence.Data.Configuration
                 .HasConstraintName("Fk_IdproviderFk");
 
             builder.HasOne(d => d.ProductLineNavigation).WithMany(p => p.Products)
-<<<<<<< HEAD
->>>>>>> 6d8ff27 (feat: :construction: New entities and configurations)
-=======
->>>>>>> ce41551957fea3c94be6e3bf99403f9e4982f068
                 .HasForeignKey(d => d.ProductLine)
                 .OnDelete(DeleteBehavior.ClientSetNull)
                 .HasConstraintName("Fk_product_line");

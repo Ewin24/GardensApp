@@ -1,13 +1,4 @@
-<<<<<<< HEAD
-<<<<<<< HEAD
-﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-=======
-﻿Microsoft Visual Studio Solution File, Format Version 12.00
->>>>>>> ce41551 (add sln)
-=======
-﻿Microsoft Visual Studio Solution File, Format Version 12.00
->>>>>>> ce41551957fea3c94be6e3bf99403f9e4982f068
 # Visual Studio Version 17
 VisualStudioVersion = 17.0.31903.59
 MinimumVisualStudioVersion = 10.0.40219.1
@@ -17,7 +8,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Domain", "Domain\Domain.csp
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Persistence", "Persistence\Persistence.csproj", "{092BEDA5-9296-4596-9A90-9DE6DB86914B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Aplication", "Aplication\Aplication.csproj", "{2FE57872-271F-47EA-AEC9-A823F564D164}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Application", "Application\Application.csproj", "{2FE57872-271F-47EA-AEC9-A823F564D164}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -45,12 +36,4 @@ Global
 		{2FE57872-271F-47EA-AEC9-A823F564D164}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{2FE57872-271F-47EA-AEC9-A823F564D164}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
-<<<<<<< HEAD
-<<<<<<< HEAD
 EndGlobal
-=======
-EndGlobal
->>>>>>> ce41551 (add sln)
-=======
-EndGlobal
->>>>>>> ce41551957fea3c94be6e3bf99403f9e4982f068

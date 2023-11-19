@@ -5050,19 +5050,21 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\dell\\Desktop\\campus\\SKILL\\NetCore\\GardensApp\\Domain\\Domain.csproj",
+      "projectUniqueName": "C:\\Users\\dell\\Desktop\\campus\\SKILL\\NetCore\\GardensApp2\\Domain\\Domain.csproj",
       "projectName": "Domain",
-      "projectPath": "C:\\Users\\dell\\Desktop\\campus\\SKILL\\NetCore\\GardensApp\\Domain\\Domain.csproj",
+      "projectPath": "C:\\Users\\dell\\Desktop\\campus\\SKILL\\NetCore\\GardensApp2\\Domain\\Domain.csproj",
       "packagesPath": "C:\\Users\\dell\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\dell\\Desktop\\campus\\SKILL\\NetCore\\GardensApp\\Domain\\obj\\",
+      "outputPath": "C:\\Users\\dell\\Desktop\\campus\\SKILL\\NetCore\\GardensApp2\\Domain\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "C:\\Users\\dell\\AppData\\Roaming\\NuGet\\NuGet.Config"
+        "C:\\Users\\dell\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
         "net7.0"
       ],
       "sources": {
+        "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
         "https://api.nuget.org/v3/index.json": {}
       },
       "frameworks": {
