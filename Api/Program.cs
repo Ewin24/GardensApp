@@ -1,4 +1,5 @@
 using System.Reflection;
+using Api.Extensions;
 using Microsoft.EntityFrameworkCore;
 using Persistence.Data;
 
@@ -11,8 +12,8 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 builder.Services.AddAutoMapper(Assembly.GetEntryAssembly());
-/* builder.Services.ConfigureCors();
-builder.Services.AddAplicacionServices(); */
+builder.Services.ConfigureCors();
+builder.Services.AddApplicationServices(); 
 
 builder.Services.AddDbContext<GardenApiContext>(option =>
 {

@@ -8,9 +8,9 @@ using Persistence.Data;
 
 namespace Application.Repository
 {
-    public class OrderRepository : GenericRepository<Order>, IOrder
+    public class ContactRepository : GenericRepository<Contact>, IContact
     {
-        public OrderRepository(GardenApiContext context) : base(context)
+        public ContactRepository(GardenApiContext context) : base(context)
         {
         }
     }
