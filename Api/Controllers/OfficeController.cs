@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 
 namespace Api.Controllers
 {
-    public class OfficeController
+    public class OfficeController :BaseController  
     {
         
     }

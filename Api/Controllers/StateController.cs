@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 
 namespace Api.Controllers
 {
-    public class StateController
+    public class StateController :BaseController  
     {
         
     }

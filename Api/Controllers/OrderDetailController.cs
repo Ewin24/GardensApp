@@ -4,8 +4,8 @@ using System.Linq;
 using System.Threading.Tasks;
 
 namespace Api.Controllers
-{
-    public class OrderDetailController
+{ 
+    public class OrderDetailController :BaseController  
     {
         
     }
