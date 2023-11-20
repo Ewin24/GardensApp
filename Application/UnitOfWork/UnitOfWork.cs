@@ -1,6 +1,7 @@
 
 using Application.Repository;
 using Domain.Interfaces;
+using Microsoft.EntityFrameworkCore;
 using Persistence;
 using Persistence.Data;
 namespace Application.UnitOfWork;
@@ -231,5 +232,10 @@ public class UnitOfWork : IUnitOfWork, IDisposable
     public async Task<int> SaveAsync()
     {
         return await _context.SaveChangesAsync();
+    }
+
+    public DbSet<T> Set<T>() where T : class
+    {
+        throw new NotImplementedException();
     }
 }
