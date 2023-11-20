@@ -3,9 +3,11 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
 using System.Linq.Expressions;
+using System.Reflection;
 using System.Text.Json;
 using System.Threading.Tasks;
 using Application.Repository;
+using Domain.Entities;
 using Domain.Interfaces;
 using iText.Signatures;
 using Microsoft.AspNetCore.Mvc;
@@ -31,12 +33,29 @@ namespace API.Contoller
             try
             {
                 string jsonstring = data.RootElement.ToString();
-                Console.WriteLine(
-        jsonstring
-                );
-                CustomQueryRepository QueryBuilder = new ();
+                Console.WriteLine(jsonstring);
+
+                var selectedEntity = data.RootElement.GetProperty("selectedEntity").GetString();
+
+                IQueryable<object> consulta;
+
+                switch (selectedEntity)
+                {
+                    // case "Cliente":
+                    //     ObtenerEntidadesPersonalizadas<Client>("Nombre", "igual", "Ejemplo");
+                    //     break;
+
+                    // case "Producto":
+                    //     consulta = ObtenerEntidadesPersonalizadas<Producto>("Nombre", "igual", "Ejemplo");
+                    //     break;
+
+                    // Agregar más casos según las entidades disponibles
+
+                    default:
+                        return BadRequest(new { Mensaje = "Entidad no reconocida" });
+                }
                 // Ejemplo de uso
-                var consulta = CustomQueryController.ObtenerEntidadesPersonalizadas();
+                // var consulta = CustomQueryController.ObtenerEntidadesPersonalizadas("Nombre", "igual", "Ejemplo");
                 // var resultados = consulta.ToList();
                 // Procesar los resultados según tus necesidades
                 return Ok(new { Mensaje = "Operación exitosa" });
