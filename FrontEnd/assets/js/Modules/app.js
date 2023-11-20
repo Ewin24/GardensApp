@@ -92,7 +92,7 @@ function getQuery() {
 
     // let jsonstring = JSON.stringify(miVariable);
 
-    const endpointUrl = "http://127.0.0.1:5042/WeatherForecast/";
+    const endpointUrl = "http://127.0.0.1:5042/CustomQuery/";
 
     fetch(endpointUrl, {
         method: 'POST',
@@ -117,25 +117,3 @@ function getQuery() {
 }
 
 loadFields();
-
-
-
-
-// [HttpPost]
-// public IActionResult Post([FromBody] JsonDocument data)
-// {
-//     try
-//     {
-//         string jsonstring = data.RootElement.ToString();
-//         Console.WriteLine(
-// jsonstring
-//         );
-//         return Ok(new { Mensaje = "Operación exitosa" });
-//     }
-//     catch (Exception ex)
-//     {
-//         return BadRequest(new { Mensaje = $"Error: {ex.Message}" });
-//     }
-// }
-// }
-// SE DEBE HACER LA CONFIGURACION DE CORS EN EL PROYECTO PARA QUE ADMITA EL ENDPOINT
