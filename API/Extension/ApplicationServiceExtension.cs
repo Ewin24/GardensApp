@@ -11,16 +11,18 @@ namespace API.Extension
 {
     public static class ApplicationServiceExtensions
     {
-        public static void ConfigureCors(this IServiceCollection services)=>
-        services.AddCors(options =>
-        {
-            options.AddPolicy("CorsPolicy", builder =>
+        public static void ConfigureCors(this IServiceCollection services) =>
+            services.AddCors(options =>
             {
-                builder.AllowAnyHeader() //WithOrigins("https://localhost:4200")
-                .AllowAnyMethod()   //WithMethods("GET", "POST", "PUT", "DELETE")
-                .WithOrigins("http://127.0.0.1:5500"); //WithHeaders("accept", "content-type", "origin", "x-custom-header");
+                options.AddPolicy(
+                    "CorsPolicy",
+                    builder =>
+                        builder
+                            .AllowAnyOrigin() //WithOrigins("https://domini.com")
+                            .AllowAnyMethod() //WithMethods(*GET", "POST")
+                            .AllowAnyHeader()
+                ); //WithHeaders(*accept*, "content-type")
             });
-        });
         public static void ConfigureRateLimiting(this IServiceCollection services)
         {
             services.AddMemoryCache();
@@ -41,7 +43,7 @@ namespace API.Extension
         }
         public static void AddAplicationServices(this IServiceCollection services)
         {
-            services.AddScoped<IUnitOfWork,UnitOfWork>();
+            services.AddScoped<IUnitOfWork, UnitOfWork>();
         }
     }
 }

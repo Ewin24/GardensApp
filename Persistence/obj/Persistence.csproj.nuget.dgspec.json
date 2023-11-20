@@ -1,24 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\APM02-55\\Documents\\GardensApp\\Persistence\\Persistence.csproj": {}
+    "C:\\Users\\dell\\Desktop\\campus\\SKILL\\NetCore\\GardensApp\\Persistence\\Persistence.csproj": {}
   },
   "projects": {
-    "C:\\Users\\APM02-55\\Documents\\GardensApp\\Domain\\Domain.csproj": {
+    "C:\\Users\\dell\\Desktop\\campus\\SKILL\\NetCore\\GardensApp\\Domain\\Domain.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\APM02-55\\Documents\\GardensApp\\Domain\\Domain.csproj",
+        "projectUniqueName": "C:\\Users\\dell\\Desktop\\campus\\SKILL\\NetCore\\GardensApp\\Domain\\Domain.csproj",
         "projectName": "Domain",
-        "projectPath": "C:\\Users\\APM02-55\\Documents\\GardensApp\\Domain\\Domain.csproj",
-        "packagesPath": "C:\\Users\\APM02-55\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\APM02-55\\Documents\\GardensApp\\Domain\\obj\\",
+        "projectPath": "C:\\Users\\dell\\Desktop\\campus\\SKILL\\NetCore\\GardensApp\\Domain\\Domain.csproj",
+        "packagesPath": "C:\\Users\\dell\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\dell\\Desktop\\campus\\SKILL\\NetCore\\GardensApp\\Domain\\obj\\",
         "projectStyle": "PackageReference",
-        "fallbackFolders": [
-          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
-        ],
         "configFilePaths": [
-          "C:\\Users\\APM02-55\\AppData\\Roaming\\NuGet\\NuGet.Config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+          "C:\\Users\\dell\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -73,25 +69,21 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.403\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.402\\RuntimeIdentifierGraph.json"
         }
       }
     },
-    "C:\\Users\\APM02-55\\Documents\\GardensApp\\Persistence\\Persistence.csproj": {
+    "C:\\Users\\dell\\Desktop\\campus\\SKILL\\NetCore\\GardensApp\\Persistence\\Persistence.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\APM02-55\\Documents\\GardensApp\\Persistence\\Persistence.csproj",
+        "projectUniqueName": "C:\\Users\\dell\\Desktop\\campus\\SKILL\\NetCore\\GardensApp\\Persistence\\Persistence.csproj",
         "projectName": "Persistence",
-        "projectPath": "C:\\Users\\APM02-55\\Documents\\GardensApp\\Persistence\\Persistence.csproj",
-        "packagesPath": "C:\\Users\\APM02-55\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\APM02-55\\Documents\\GardensApp\\Persistence\\obj\\",
+        "projectPath": "C:\\Users\\dell\\Desktop\\campus\\SKILL\\NetCore\\GardensApp\\Persistence\\Persistence.csproj",
+        "packagesPath": "C:\\Users\\dell\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\dell\\Desktop\\campus\\SKILL\\NetCore\\GardensApp\\Persistence\\obj\\",
         "projectStyle": "PackageReference",
-        "fallbackFolders": [
-          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
-        ],
         "configFilePaths": [
-          "C:\\Users\\APM02-55\\AppData\\Roaming\\NuGet\\NuGet.Config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+          "C:\\Users\\dell\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -105,8 +97,8 @@
           "net7.0": {
             "targetAlias": "net7.0",
             "projectReferences": {
-              "C:\\Users\\APM02-55\\Documents\\GardensApp\\Domain\\Domain.csproj": {
-                "projectPath": "C:\\Users\\APM02-55\\Documents\\GardensApp\\Domain\\Domain.csproj"
+              "C:\\Users\\dell\\Desktop\\campus\\SKILL\\NetCore\\GardensApp\\Domain\\Domain.csproj": {
+                "projectPath": "C:\\Users\\dell\\Desktop\\campus\\SKILL\\NetCore\\GardensApp\\Domain\\Domain.csproj"
               }
             }
           }
@@ -146,7 +138,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.403\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.402\\RuntimeIdentifierGraph.json"
         }
       }
     }

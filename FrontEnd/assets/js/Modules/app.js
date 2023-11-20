@@ -92,7 +92,7 @@ function getQuery() {
 
     // let jsonstring = JSON.stringify(miVariable);
 
-    const endpointUrl = "http://127.0.0.1:5042/CustomQuery/";
+    const endpointUrl = "http://127.0.0.1:5019/CustomQuery/";
 
     fetch(endpointUrl, {
         method: 'POST',

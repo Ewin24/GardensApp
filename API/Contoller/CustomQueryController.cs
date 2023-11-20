@@ -23,17 +23,6 @@ namespace API.Contoller
             _unitOfWork = unitOfWork;
         }
 
-        public IActionResult Index()
-        {
-            return View();
-        }
-
-        [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
-        public IActionResult Error()
-        {
-            return View("Error!");
-        }
-
         [HttpPost]
         public IActionResult Post([FromBody] JsonDocument data)
         {
@@ -53,6 +42,7 @@ namespace API.Contoller
             catch (Exception ex)
             {
                 return BadRequest(new { Mensaje = $"Error: {ex.Message}" });
+                //preparar manejo de errores por medio de tarjetas en js
             }
         }
     }
