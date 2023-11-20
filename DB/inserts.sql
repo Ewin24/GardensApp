@@ -57,7 +57,8 @@ INSERT INTO garden.location_customer (tipoDeVia, numeroPri, letra, bis, letrasec
 ('Avenue', 789, 'B', 'Bis', '', 'South', 101, 'C', 0, '', 'Suite 200', 1002, 5, '56789'),
 ('Road', 456, 'C', '', '', 'East', 789, '', 0, '', 'Unit 301', 1003, 6, '98765');
 
---chack
+
+--check
 INSERT INTO garden.location_office (tipoDeVia, numeroPri, letra, bis, letrasec, cardinal, numeroSec, letrater, numeroTer, cardinalSec, complemento, PostCode, idCityFk) VALUES
 ('Boulevard', 101, 'D', '', '', 'West', 202, '', 0, '', 'Floor 1', '54321', 4),
 ('Lane', 303, 'E', '', '', 'South', 404, '', 0, '', 'Suite 2', '98765', 4),

@@ -5,7 +5,9 @@ using System.Linq;
 using System.Linq.Expressions;
 using System.Text.Json;
 using System.Threading.Tasks;
+using Application.Repository;
 using Domain.Interfaces;
+using iText.Signatures;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 
@@ -32,12 +34,13 @@ namespace API.Contoller
                 Console.WriteLine(
         jsonstring
                 );
-                return Ok(new { Mensaje = "Operación exitosa" });
-
+                CustomQueryRepository QueryBuilder = new ();
                 // Ejemplo de uso
-                // var consulta = contexto.ObtenerEntidadesPersonalizadas("Nombre", "igual", "Ejemplo");
+                var consulta = CustomQueryController.ObtenerEntidadesPersonalizadas();
                 // var resultados = consulta.ToList();
                 // Procesar los resultados según tus necesidades
+                return Ok(new { Mensaje = "Operación exitosa" });
+
             }
             catch (Exception ex)
             {
