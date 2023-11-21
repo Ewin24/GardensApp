@@ -8,6 +8,6 @@ namespace Domain.Interfaces
 {
     public interface IEmployee : IGeneric<Employee>
     {
-        
+         Task<object> GetEmployeesQuantity();
     }
 }

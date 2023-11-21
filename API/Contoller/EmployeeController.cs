@@ -24,55 +24,55 @@ namespace Api.Controllers
         [HttpGet]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
-        public async Task<ActionResult<IEnumerable<ClientDto>>> Get()
+        public async Task<ActionResult<IEnumerable<EmployeeDto>>> Get()
         {
-            var client = await _unitOfWork.Clients
+            var employee = await _unitOfWork.Employee
                                         .GetAllAsync();
 
-            return _mapper.Map<List<ClientDto>>(client);
+            return _mapper.Map<List<EmployeeDto>>(employee);
         }
         [HttpGet("{id}")]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
-        public async Task<ActionResult<ClientDto>> Get(int id)
+        public async Task<ActionResult<EmployeeDto>> Get(int id)
         {
-            var client = await _unitOfWork.Clients.GetByIdAsync(id);
-            if (client == null)
+            var employee = await _unitOfWork.Employee.GetByIdAsync(id);
+            if (employee == null)
                 return NotFound();
 
-            return _mapper.Map<ClientDto>(client);
+            return _mapper.Map<EmployeeDto>(employee);
         }
         [HttpPost]
         [ProducesResponseType(StatusCodes.Status201Created)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
-        public async Task<ActionResult<Client>> Post(ClientDto cityDto)
+        public async Task<ActionResult<Employee>> Post(EmployeeDto cityDto)
         {
-            var client = _mapper.Map<Client>(cityDto);
-            _unitOfWork.Clients.Add(client);
+            var employee = _mapper.Map<Employee>(cityDto);
+            _unitOfWork.Employee.Add(employee);
             await _unitOfWork.SaveAsync();
-            if (client == null)
+            if (employee == null)
             {
                 return BadRequest();
             }
-            cityDto.Id = client.Id;
+            cityDto.Id = employee.Id;
             return CreatedAtAction(nameof(Post), new { id = cityDto.Id }, cityDto);
         }
         [HttpPut("{id}")]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
-        public async Task<ActionResult<ClientDto>> Put(int id, [FromBody] ClientDto cityDto)
+        public async Task<ActionResult<EmployeeDto>> Put(int id, [FromBody] EmployeeDto cityDto)
         {
             if (cityDto == null)
                 return NotFound();
 
-            var productoBd = await _unitOfWork.Clients.GetByIdAsync(id);
+            var productoBd = await _unitOfWork.Employee.GetByIdAsync(id);
             if (productoBd == null)
                 return NotFound();
 
-            var client = _mapper.Map<Client>(cityDto);
-            _unitOfWork.Clients.Update(client);
+            var employee = _mapper.Map<Employee>(cityDto);
+            _unitOfWork.Employee.Update(employee);
             await _unitOfWork.SaveAsync();
             return cityDto;
         }
@@ -81,14 +81,24 @@ namespace Api.Controllers
         [ProducesResponseType(StatusCodes.Status404NotFound)]
         public async Task<IActionResult> Delete(int id)
         {
-            var client = await _unitOfWork.Clients.GetByIdAsync(id);
-            if (client == null)
+            var employee = await _unitOfWork.Employee.GetByIdAsync(id);
+            if (employee == null)
                 return NotFound();
 
-            _unitOfWork.Clients.Delete(client);
+            _unitOfWork.Employee.Delete(employee);
             await _unitOfWork.SaveAsync();
 
             return NoContent();
+        }
+         [HttpGet("/Ge")]
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
+        public async Task<ActionResult<IEnumerable<object>>> GetEmployeesQuantity()
+        {
+            var employee = await _unitOfWork.Employee
+                                        .GetAllAsync();
+
+            return _mapper.Map<List<EmployeeDto>>(employee);
         }
     }
 }
