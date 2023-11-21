@@ -11,5 +11,6 @@ namespace Domain.Interfaces
     {
         Task<object> GetOrderPaymentAverangeIn2009();
         Task<IEnumerable<Payment>> GetByPaymentMethodYear();
+        Task<IEnumerable<object>> GetPayMethods();
     }
 }

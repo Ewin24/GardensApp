@@ -28,27 +28,14 @@ public class PaymentRepository : GenericRepositoryString<Payment>, IPayment
                             .ToListAsync();
     }
 
-    //14. Devuelve un listado con todas las formas de pago que aparecen en la tabla pago. Tenga en cuenta que no deben aparecer formas de pago repetidas.
-    //Por mi parte normalice los metodos de pago, así que solamente es necesario utilizar el metodo generico GetAllAsync.
-    // public override async Task<(int totalRegistros, IEnumerable<Payment> registros)> GetAllAsync(int pageIndex, int pageSize, string search)
-    // {
-    //     //se debe arreglar el metodo GetAllAsync 
-    //     var query = _context.Payments as IQueryable<Payment>;
-
-    //     if (!string.IsNullOrEmpty(search))
-    //     {
-    //         query = query.Where(p => p.Id.ToString() == search);
-    //     }
-
-    //     query = query.OrderBy(p => p.Id);
-    //     var totalRegistros = await query.CountAsync();
-    //     var registros = await query
-    //         .Skip((pageIndex - 1) * pageSize)
-    //         .Take(pageSize)
-    //         .ToListAsync();
-
-    //     return (totalRegistros, registros);
-    // }
+    //14. Devuelve un listado con todas las formas de pago que aparecen en la tabla pago.
+    public async Task<IEnumerable<object>> GetPayMethods()
+    {
+        return await (_context.Payments
+            .Select(p => p.PaymentMethod)
+            .Distinct())
+            .ToListAsync();
+    }
 
     // 3. ¿Cuál fue el pago medio en 2009?
     public async Task<object> GetOrderPaymentAverangeIn2009()

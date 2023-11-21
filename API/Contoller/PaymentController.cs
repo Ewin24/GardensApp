@@ -93,7 +93,7 @@ namespace Api.Controllers
 
 
         //GetPaymentMethod
-        [HttpGet("{GetPaymentMethod}")]
+        [HttpGet("GetByPaymentMethodYear")]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         public async Task<ActionResult<IEnumerable<PaymentDto>>> GetByPaymentMethodYear(string paymentMethod, int year)
@@ -103,9 +103,19 @@ namespace Api.Controllers
             return _mapper.Map<List<PaymentDto>>(payment);
         }
 
+        //GetPaymentMethods
+        [HttpGet("GetPaymentMethods")]
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
+        public async Task<ActionResult<IEnumerable<object>>> GetPayMethods()
+        {
+            var methods = await _unitOfWork.Payment.GetPayMethods();
+
+            return Ok(methods);
+        }
 
         //GetPaymentYear
-        [HttpGet("{GetPaymentAverageIn2009}")]
+        [HttpGet("GetPaymentAverageIn2009")]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         public async Task<ActionResult<object>> GetOrderPaymentAverangeIn2009(string paymentMethod, int year)
