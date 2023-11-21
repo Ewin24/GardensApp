@@ -11,5 +11,6 @@ namespace Domain.Interfaces
         Task<IEnumerable<object>> GetAllStatus();
         Task<IEnumerable<Order>> GetAllDeliveredEarlier();
         Task<IEnumerable<Order>> GetOrderByStatusYear(string status, int year);
+        Task<object> GetByDifferentProdQuantity();
     }
 }
