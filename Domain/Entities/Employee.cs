@@ -19,6 +19,7 @@ public partial class Employee : BaseEntity
     public string OfficeCode { get; set; } = null!;
 
     public int IdBossFk { get; set; }
+    public int? BossId { get; set; }
 
     public string Position { get; set; }
 

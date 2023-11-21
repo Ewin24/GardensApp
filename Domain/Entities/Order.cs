@@ -17,6 +17,7 @@ public partial class Order : BaseEntity
     public string Comments { get; set; } = null!;
 
     public int ClientCode { get; set; }
+    
 
     public virtual Client ClientCodeNavigation { get; set; } = null!;
 

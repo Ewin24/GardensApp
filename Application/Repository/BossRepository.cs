@@ -7,12 +7,13 @@ using Domain.Entities;
 using Domain.Interfaces;
 using Persistence.Data;
 
-namespace Application.Repository
-{
+namespace Application.Repository;
+
     public class BossRepository : GenericRepository<Boss>, IBoss
     {
+        private readonly  JardineriaContext _context;
         public BossRepository(JardineriaContext context) : base(context)
         {
+            _context = context;   
         }
     }
-}
