@@ -90,5 +90,17 @@ namespace Api.Controllers
 
             return NoContent();
         }
+         [HttpGet("/GetClienSpain")]
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
+        [ProducesResponseType(StatusCodes.Status404NotFound)]
+        public async Task<ActionResult<ClientDto>> GetByCountry(string country ="spain")
+        {
+            var client = await _unitOfWork.Clients.GetAllAsync();
+            if (client == null)
+                return NotFound();
+
+            return _mapper.Map<ClientDto>(client);
+        }
     }
 }

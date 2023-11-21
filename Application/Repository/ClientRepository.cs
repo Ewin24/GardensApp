@@ -18,31 +18,15 @@ public class ClientRepository : GenericRepository<Client>, IClient
     {
         _context = context;
     }
-    //1. Devuelve un listado con el nombre de los todos los clientes españoles.
-    // public async Task<IEnumerable<Client>> GetByCountry(string country)
-    // {
-    //     return await _context.Clients
-    //         //ruta para el Nombre del pais
-    //         .Where(c => c.LocationClients)
-    //         .ToListAsync();
-    // }
-    //2. Devuelve un listado con los distintos estados por los que puede pasar un pedido.
+    //1. Devuelve un listado con el nombre de los todos los clientes españoles
+    public async Task<IEnumerable<Client>> GetByCountry(string country)
+     {
+         return await _context.Clients.Where(c => c.LocationClients.Equals(country))
+             .ToListAsync();
+     }
+   // 2. Devuelve un listado con los distintos estados por los que puede pasar un pedido.
 
-    public async Task<IEnumerable<Object>> GetAllStatus()
-    {
-        //
-        //true
-        var dato = await (
-            from o in _context.Orders
-            select new
-            {
-                status = o.Status
-            }
-        ).Distinct()
-        .ToListAsync();
-        return dato;
-
-    }
+   
 
     //. Devuelve un listado con el código de cliente de aquellos clientes que
     // realizaron algún pago en 2008. Tenga en cuenta que deberá eliminar
@@ -315,4 +299,6 @@ public class ClientRepository : GenericRepository<Client>, IClient
                             .OrderBy(c => c.ClientName)
                             .ToListAsync();
     }
+
+    
 }

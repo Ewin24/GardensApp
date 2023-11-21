@@ -8,6 +8,9 @@ namespace Domain.Interfaces
 {
     public interface IClient : IGeneric<Client>
     {
+         Task<IEnumerable<Client>> GetByCountry(string country);
+        
+
         
     }
 }
