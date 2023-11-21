@@ -9,6 +9,7 @@ namespace Domain.Interfaces
 {
     public interface IPayment : IGenericString<Payment>
     {
-        
+        Task<object> GetOrderPaymentAverangeIn2009();
+        Task<IEnumerable<Payment>> GetByPaymentMethodYear();
     }
 }

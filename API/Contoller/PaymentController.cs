@@ -101,22 +101,18 @@ namespace Api.Controllers
             var payment = await _unitOfWork.Payment.GetByPaymentMethodYear();
 
             return _mapper.Map<List<PaymentDto>>(payment);
-
         }
 
 
         //GetPaymentYear
-        [HttpGet("{GetPaymentYear}")]
+        [HttpGet("{GetPaymentAverageIn2009}")]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
-        public async Task<ActionResult<IEnumerable<PaymentDto>>> GetOrderPaymentAverangeInYear(string paymentMethod, int year)
+        public async Task<ActionResult<object>> GetOrderPaymentAverangeIn2009(string paymentMethod, int year)
         {
-            var payment = await _unitOfWork.Payment.GetOrderPaymentAverangeInYear();
+            var payment = await _unitOfWork.Payment.GetOrderPaymentAverangeIn2009();
 
             return _mapper.Map<List<PaymentDto>>(payment);
-
         }
-        
-
     }
 }
