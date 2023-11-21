@@ -8,6 +8,8 @@ namespace Domain.Interfaces
 {
     public interface IOrder : IGeneric<Order>
     {
-        
+        Task<IEnumerable<object>> GetAllStatus();
+        Task<IEnumerable<Order>> GetAllDeliveredEarlier();
+        Task<IEnumerable<Order>> GetOrderByStatusYear(string status, int year);
     }
 }

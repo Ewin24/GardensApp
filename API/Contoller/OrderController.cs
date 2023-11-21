@@ -91,5 +91,25 @@ namespace Api.Controllers
 
             return NoContent();
         }
+
+        [HttpGet("/GetAllStatus")]
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
+        public async Task<ActionResult<IEnumerable<OrderDto>>> GetAllStatus()
+        {
+            var order = await _unitOfWork.Orders.GetAllAsync();
+
+            return _mapper.Map<List<OrderDto>>(order);
+        }
+        
+        [HttpGet("/GetOrderYear")]
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
+        public async Task<ActionResult<IEnumerable<OrderDto>>> GetOrderByStatusYear(string status,int orderr)
+        {
+            var order = await _unitOfWork.Orders.GetOrderByStatusYear(status,orderr);
+
+            return _mapper.Map<List<OrderDto>>(order);
+        }
     }
 }
