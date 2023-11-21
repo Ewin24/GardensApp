@@ -20,7 +20,7 @@ public class OrderRepository : GenericRepository<Order>, IOrder
     //10. Devuelve un listado con el código de pedido, código de cliente, fecha
     //esperada y fecha de entrega de los pedidos cuya fecha de entrega ha sido al
     //menos dos días antes de la fecha esperada.
-    
+
     public async Task<IEnumerable<Object>> GetAllStatus()
     {
         //
@@ -75,6 +75,11 @@ public class OrderRepository : GenericRepository<Order>, IOrder
             .ToListAsync();
 
         return result;
+    }
+
+    public async Task<object> GetByDifferentProdQuantity()
+    {
+        return new { DiffProductQuantity = await _context.Orders.Select(o => o.OrderDetails.Select(od => od.ProductCode).Distinct()).CountAsync() };
     }
     //16. Muestre la suma total de todos los pagos que se realizaron para cada uno de los años que aparecen en la tabla pagos.
 

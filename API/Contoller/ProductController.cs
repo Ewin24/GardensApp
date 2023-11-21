@@ -31,6 +31,72 @@ namespace Api.Controllers
 
             return _mapper.Map<List<ProductDto>>(product);
         }
+
+        [HttpGet("GetByGamaStock")]
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
+        public async Task<ActionResult<IEnumerable<ProductDto>>> GetByGamaStock([FromQuery] string productLine, [FromQuery] int stockQuantity)
+        {
+            var products = await _unitOfWork.Products.GetByGamaStock(productLine, stockQuantity);
+
+            return _mapper.Map<List<ProductDto>>(products);
+        }
+
+        [HttpGet("GetNeverInOrder")]
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
+        public async Task<ActionResult<IEnumerable<ProductDto>>> GetNeverInOrder()
+        {
+            var products = await _unitOfWork.Products.GetNeverInOrder();
+
+            return _mapper.Map<List<ProductDto>>(products);
+        }
+
+        [HttpGet("GetNeverInOrderspecified")]
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
+        public async Task<ActionResult<IEnumerable<object>>> GetNeverInOrderspecified()
+        {
+            var products = await _unitOfWork.Products.GetNeverInOrderspecified();
+
+            return Ok(products);
+        }
+
+        [HttpGet("GetByDifferentProdQuantity")]
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
+        public async Task<ActionResult<object>> GetByDifferentProdQuantity()
+        {
+            var result = await _unitOfWork.Orders.GetByDifferentProdQuantity();
+
+            return Ok(result);
+        }
+
+        [HttpGet("GetByHigherSalesPrice")]
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
+        public async Task<ActionResult<ProductDto>> GetByHigherSalesPrice()
+        {
+            var product = await _unitOfWork.Products.GetByHigherSalesPrice();
+
+            if (product == null)
+            {
+                return NotFound(); // Otra opción podría ser retornar un objeto con información indicando que no se encontró ningún producto.
+            }
+
+            return _mapper.Map<ProductDto>(product);
+        }
+
+        [HttpGet("GetByNotInOrder")]
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
+        public async Task<ActionResult<IEnumerable<Product>>> GetByNotInOrder()
+        {
+            var products = await _unitOfWork.Products.GetByNotInOrder();
+
+            return Ok(products);
+        }
+
         [HttpGet("{id}")]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
