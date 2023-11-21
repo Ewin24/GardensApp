@@ -43,15 +43,7 @@ public class ClientRepository : GenericRepository<Client>, IClient
                             .Distinct()
                             .ToListAsync();
     }
-    // #3 codigo 2008
-    // public async Task<IEnumerable<Client>> GetIdByPaymentDateE(int year)
-    // {
-    //     //bad
-    //     return await _context.Clients
-    //                         .Where(c => c.Orders.Any(o => o.Payment.PaymentDate.Year == year))
-    //                         .Distinct()
-    //                         .ToListAsync();
-    // }
+   
     //9. Devuelve un listado con el código de pedido, código de cliente, fecha esperada y fecha de entrega de los pedidos que no han sido entregados a tiempo.
     public async Task<IEnumerable<Order>> GetAllNotDeliveredOnTime()
     {

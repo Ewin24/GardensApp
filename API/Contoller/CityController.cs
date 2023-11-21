@@ -4,8 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using API.Dto;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Mvc;
-using API.Dto;
+
 using Domain.Interfaces;
 using AutoMapper;
 using Domain.Entities;
@@ -79,6 +78,7 @@ namespace Api.Controllers
             return cityDto;
         }
         [HttpDelete("{id}")]
+        
         [ProducesResponseType(StatusCodes.Status204NoContent)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
         public async Task<IActionResult> Delete(int id)

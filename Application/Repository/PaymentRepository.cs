@@ -42,4 +42,13 @@ public class PaymentRepository : GenericRepositoryString<Payment>, IPayment
     {
         return new { PaymentAverange = await _context.Payments.Where(p => p.PaymentDate.Year.Equals("2009")).AverageAsync(p => p.Total) };
     }
+
+     // #3 codigo 2008
+    /*  public async Task<IEnumerable<Client>> GetIdByPaymentDateE(int year)
+     {
+         return await _context.Clients
+                             .Where(c => c.Orders.Any(o => o.Payment.PaymentDate.Year == year))
+                             .Distinct()
+                             .ToListAsync();
+     } */
 }

@@ -7,6 +7,12 @@ namespace API.Dto
 {
     public class ProductDto
     {
-        public string Id { get; set; }
+        public string Id { get;  }
+
+        public string Name { get;  }
+
+        public string ProductLine { get;  } 
+
+        public string Dimensions { get;  }
     }
 }

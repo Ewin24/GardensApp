@@ -28,14 +28,6 @@ public class OfficeRepository : GenericRepositoryString<Office>, IOffice
     //                     !o.Employees.Any(e => e.Orders.Any(o => o.OrderDetails
     //                     .Any(od => od.Product.GamaNavigation.Gama.Equals(gama))))).ToListAsync();
     // }
-    //9. Devuelve un listado con los datos de los empleados que no tienen clientes asociados y el nombre de su jefe asociado.
-    // public async Task<IEnumerable<Employee>> GetNotAssociatedcustomerBossName()
-    // {
-    //     //empleado - jefe
-    //     return await _context.Employees
-    //                         .Include(e => e.Boss)
-    //                         .Where(e => !e.Orders.Any())
-    //                         .ToListAsync();
-    // }
+  
 
 }

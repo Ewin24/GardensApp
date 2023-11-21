@@ -37,7 +37,7 @@ namespace API.Contoller
 
                 var selectedEntity = data.RootElement.GetProperty("selectedEntity").GetString();
 
-                IQueryable<object> consulta;
+                //IQueryable<object> consulta;
 
                 switch (selectedEntity)
                 {
@@ -58,7 +58,7 @@ namespace API.Contoller
                 // var consulta = CustomQueryController.ObtenerEntidadesPersonalizadas("Nombre", "igual", "Ejemplo");
                 // var resultados = consulta.ToList();
                 // Procesar los resultados según tus necesidades
-                return Ok(new { Mensaje = "Operación exitosa" });
+                //return Ok(new { Mensaje = "Operación exitosa" });
 
             }
             catch (Exception ex)
