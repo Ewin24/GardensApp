@@ -90,5 +90,33 @@ namespace Api.Controllers
 
             return NoContent();
         }
+
+
+        //GetPaymentMethod
+        [HttpGet("{GetPaymentMethod}")]
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
+        public async Task<ActionResult<IEnumerable<PaymentDto>>> GetByPaymentMethodYear(string paymentMethod, int year)
+        {
+            var payment = await _unitOfWork.Payment.GetByPaymentMethodYear();
+
+            return _mapper.Map<List<PaymentDto>>(payment);
+
+        }
+
+
+        //GetPaymentYear
+        [HttpGet("{GetPaymentYear}")]
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
+        public async Task<ActionResult<IEnumerable<PaymentDto>>> GetOrderPaymentAverangeInYear(string paymentMethod, int year)
+        {
+            var payment = await _unitOfWork.Payment.GetOrderPaymentAverangeInYear();
+
+            return _mapper.Map<List<PaymentDto>>(payment);
+
+        }
+        
+
     }
 }

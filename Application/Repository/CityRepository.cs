@@ -11,7 +11,7 @@ namespace Application.Repository
     public class CityRepository : GenericRepository<City>, ICity
     {
         public CityRepository(JardineriaContext context) : base(context)
-    {
-    }
+        {
+        }
     }
 }

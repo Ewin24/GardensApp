@@ -90,5 +90,16 @@ namespace Api.Controllers
 
             return NoContent();
         }
+
+      /*   [HttpGet("{/OficinasCiudad}")]
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
+        public async Task<ActionResult<IEnumerable<>>> OficinaCiudad()
+        {
+            var office = await _unitOfWork.Offices
+                                        .GetAllAsync();
+
+            return _mapper.Map<List<OfficeDto>>(office);
+        } */
     }
 }

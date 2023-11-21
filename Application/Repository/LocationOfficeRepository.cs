@@ -11,7 +11,7 @@ namespace Application.Repository
     public class LocationOfficeRepository : GenericRepository<LocationOffice>, ILocationOffice
     {
         public LocationOfficeRepository(JardineriaContext context) : base(context)
-    {
-    }
+        {
+        }
     }
 }
