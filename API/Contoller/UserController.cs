@@ -29,61 +29,87 @@ namespace API.Contoller
             _mapper = mapper;
         }
 
-        [HttpPost("register")]
-        public async Task<ActionResult<object>> Register(UserDto request)
+        [HttpPost("Register")]
+        public async Task<ActionResult<bool>> Register(UserDto request)
         {
             try
             {
-                User user = new User();
-                string passwordHash = BCrypt.Net.BCrypt.HashPassword(request.Password);
+                var existingUser = await _unitOfWork.Users.GetByEmailAsync(request.email);
 
-                user.email = request.email;
-                user.Password = passwordHash;
+                if (existingUser != null)
+                {
+                    BadRequest("El usuario ya está registrado");
+                }
 
-                // Asigna el resultado del mapeo a la entidad User
-                _mapper.Map(request, user);
+                var newUser = new User
+                {
+                    email = request.email,
+                    Password = request.Password
+                };
 
-                _unitOfWork.Users.Add(user);
-                await _unitOfWork.SaveAsync();
+                this._unitOfWork.Users.Add(newUser);
+                await this._unitOfWork.SaveAsync();
 
-                return Ok(new { Message = "Registration successful" });
-            }
-            catch (DbUpdateException ex)
-            {
-                // Imprimir información detallada sobre la excepción
-                Console.WriteLine($"DbUpdateException: {ex.Message}");
-                Console.WriteLine($"Inner Exception: {ex.InnerException?.Message}");
-
-                // Puedes también imprimir la traza de la excepción para obtener más detalles
-                Console.WriteLine($"Exception Stack Trace: {ex.StackTrace}");
-
-                // Manejar la excepción según tus necesidades
-                return StatusCode(500, "Internal Server Error");
+                return Ok(); // Devuelve true si el usuario se registra correctamente
             }
             catch (Exception ex)
             {
-                // Manejar otras excepciones según tus necesidades
-                Console.WriteLine($"Error al registrar usuario: {ex.Message}");
-                return StatusCode(500, "Internal Server Error");
+                // Manejo de errores
+                return StatusCode(500, false); // Envía falso en caso de error
             }
         }
 
 
-        [HttpPost("login")]
-        public async Task<ActionResult<User>> Login(UserDto request)
+        [HttpPost("Login")]
+        public async Task<bool> Login(UserDto request)
         {
-            var user = await _unitOfWork.Users.GetByEmailAsync(request.email);
-            if (user == null)
+            try
             {
-                return BadRequest("User not found.");
+                var user = await _unitOfWork.Users.GetByEmailAsync(request.email);
+
+                if (user == null)
+                {
+                    return false;
+                }
+                bool passwordMatches = (request.Password == user.Password);
+
+                return passwordMatches;
             }
-            if (!BCrypt.Net.BCrypt.Verify(request.Password, user.Password))
+            catch (Exception ex)
             {
-                return BadRequest("Wrong password.");
+                return false;
             }
-            string token = CreateToken(user);
-            return Ok(token);
         }
+
+        // [HttpPost("register")]
+        // public ActionResult<User> Register(UserDto request)
+        // {
+        //     string passwordHash
+        //         = BCrypt.Net.BCrypt.HashPassword(request.Password);
+
+        //     user.Username = request.Username;
+        //     user.PasswordHash = passwordHash;
+
+        //     return Ok(user);
+        // }
+
+        // [HttpPost("login")]
+        // public ActionResult<User> Login(UserDto request)
+        // {
+        //     if (user.Username != request.Username)
+        //     {
+        //         return BadRequest("User not found.");
+        //     }
+
+        //     if (!BCrypt.Net.BCrypt.Verify(request.Password, user.PasswordHash))
+        //     {
+        //         return BadRequest("Wrong password.");
+        //     }
+
+        //     string token = CreateToken(user);
+
+        //     return Ok(token);
+        // }
 
         private string CreateToken(User user)
         {
