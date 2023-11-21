@@ -13,7 +13,7 @@ namespace Application.Repository
     {
         // public DbSet<T> Entidad { get; set; }
         private readonly IUnitOfWork _unitOfWork;
-        
+
         public IQueryable<T> ObtenerEntidadesPersonalizadas(string campo, string condicion, string valorCondicion)
         {
             // Crear una expresión lambda dinámicamente para la condición

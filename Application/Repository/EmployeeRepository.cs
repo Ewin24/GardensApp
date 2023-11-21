@@ -39,7 +39,7 @@ public class EmployeeRepository : GenericRepository<Employee>, IEmployee
     //                          .ThenInclude(o => o.Address)
     //                          .Where(e => !e.Orders.Any()).ToListAsync();
     // }
-    
+
     //            //4. Devuelve un listado que muestre los empleados que no tienen una oficina asociada y los que no tienen un cliente asociado.
     //     public async Task<IEnumerable<Employee>> GetNotAssociatedEmployeeAndOffice()
     //     {
@@ -50,53 +50,50 @@ public class EmployeeRepository : GenericRepository<Employee>, IEmployee
     //                             .Where(e => e.OfficeId == null || !e.Orders.Any()).ToListAsync();
     //     }
 
-                   //1. ¿Cuántos empleados hay en la compañía?
-        public async Task<object> GetEmployeesQuantity()
-        {
-            return new { EmployeesQuantity = await _context.Employees.CountAsync()};
-        }
+    //1. ¿Cuántos empleados hay en la compañía?
+    public async Task<object> GetEmployeesQuantity()
+    {
+        return new { EmployeesQuantity = await _context.Employees.CountAsync() };
+    }
 
-               //7. Devuelve el nombre de los representantes de ventas y el número de clientes
-        // public async Task<IEnumerable<object>> GetEmployeesCustomerQuantity()
-        // {
-        //     return await _context.Employees
-        //                         .Where(e => e.Position == "REPRESENTANTE VENTAS")
-        //                         .GroupBy(e => e.Orders.FirstOrDefault().CustomerId)
-        //                         .Select(g => new{
-        //                             g.FirstOrDefault().Name,
-        //                             customersAsociated = g.Count()
-        //                         }).ToListAsync();
-        // }
-                        //14. Devuelve el nombre, apellidos, puesto y teléfono de la oficina de aquellos empleados que no sean representante de ventas de ningún cliente.
-        // public async Task<IEnumerable<object>> GetEmployeesWithoutOrder()
-        // {
-        //     return await _context.Employees
-        //                         .Where(e => e.JobTitle == "REPRESENTANTE VENTAS"
-        //                         && !e.Orders.Any())
-        //                         .Select(e => new{
-        //                             e.Name,
-        //                             LastName = e.LastName1 + " " + e.LastName2,
-        //                             e.JobTitle,
-        //                             e.Office.Phone
-        //                         }).ToListAsync();
-        // }
-                       //1. Devuelve el listado de clientes indicando el nombre del cliente y cuántos pedidos ha realizado. Tenga en cuenta que pueden existir clientes que no han realizado ningún pedido.
+    //7. Devuelve el nombre de los representantes de ventas y el número de clientes
+    // public async Task<IEnumerable<object>> GetEmployeesCustomerQuantity()
+    // {
+    //     return await _context.Employees
+    //                         .Where(e => e.Position == "REPRESENTANTE VENTAS")
+    //                         .GroupBy(e => e.Orders.FirstOrDefault().CustomerId)
+    //                         .Select(g => new{
+    //                             g.FirstOrDefault().Name,
+    //                             customersAsociated = g.Count()
+    //                         }).ToListAsync();
+    // }
+    //14. Devuelve el nombre, apellidos, puesto y teléfono de la oficina de aquellos empleados que no sean representante de ventas de ningún cliente.
+    // public async Task<IEnumerable<object>> GetEmployeesWithoutOrder()
+    // {
+    //     return await _context.Employees
+    //                         .Where(e => e.JobTitle == "REPRESENTANTE VENTAS"
+    //                         && !e.Orders.Any())
+    //                         .Select(e => new{
+    //                             e.Name,
+    //                             LastName = e.LastName1 + " " + e.LastName2,
+    //                             e.JobTitle,
+    //                             e.Office.Phone
+    //                         }).ToListAsync();
+    // }
+    //1. Devuelve el listado de clientes indicando el nombre del cliente y cuántos pedidos ha realizado. Tenga en cuenta que pueden existir clientes que no han realizado ningún pedido.
 
-            //5. Devuelve el nombre, apellidos, puesto y teléfono de la oficina de aquellos empleados que no sean representante de ventas de ningún cliente
-        // public async Task<IEnumerable<object>> GetDataByJobTitle()
-        // {
-        //     return await _context.Employees
-        //                         .Where(e => !e.Orders.Any())
-        //                         .Where(e => e.JobTitle == "REPRESENTANTE VENTAS"
-        //                         && !e.Orders.Any())
-        //                         .Select(e => new{
-        //                             e.Name,
-        //                             LastName = e.LastName1 + " " + e.LastName2,
-        //                             e.JobTitle,
-        //                             e.Office.Phone
-        //                         }).ToListAsync();
-        // }
-
-
-
+    //5. Devuelve el nombre, apellidos, puesto y teléfono de la oficina de aquellos empleados que no sean representante de ventas de ningún cliente
+    // public async Task<IEnumerable<object>> GetDataByJobTitle()
+    // {
+    //     return await _context.Employees
+    //                         .Where(e => !e.Orders.Any())
+    //                         .Where(e => e.JobTitle == "REPRESENTANTE VENTAS"
+    //                         && !e.Orders.Any())
+    //                         .Select(e => new{
+    //                             e.Name,
+    //                             LastName = e.LastName1 + " " + e.LastName2,
+    //                             e.JobTitle,
+    //                             e.Office.Phone
+    //                         }).ToListAsync();
+    // }
 }
