@@ -7,7 +7,19 @@
             rel='stylesheet'>
         <link rel="stylesheet" href="/FrontEnd/assets/css/style.css">
         <script src="/FrontEnd/assets/js/responsive.js" async></script>
-        <script src="/FrontEnd/assets/js/Modules/app.js" defer></script>
+        <!-- <script src="/FrontEnd/assets/js/Modules/app.js" defer></script> -->
+        <link rel="stylesheet"
+            href="https://cdn.datatables.net/1.10.22/css/jquery.dataTables.min.css" />
+
+        <!--jQuery library file -->
+        <script type="text/javascript"
+            src="https://code.jquery.com/jquery-3.5.1.js"> 
+    </script>
+
+        <!--Datatable plugin JS library file -->
+        <script type="text/javascript"
+            src="https://cdn.datatables.net/1.10.22/js/jquery.dataTables.min.js"> 
+    </script>
         <title>GardensApp</title>
     </head>
     <body>
@@ -24,30 +36,36 @@
                 <li><a class="active" href="./productLine.html"><i
                             class='bx bxs-badge icon'></i> Product Line</a></li>
                 <li><a class="active" href="./client.html"><i
-                            class='bx bxs-dashboard icon'></i> Client</a></li>
+                            class='bx bxs-dashboard icon'></i>
+                        Client</a></li>
                 <li><a class="active" href="./city.html"><i
-                            class='bx bxs-city icon'></i> City</a></li>
+                            class='bx bxs-city icon'></i>
+                        City</a></li>
                 <li><a class="active" href="./state.html"><i
-                            class='bx bxs-city icon'></i> State</a></li>
+                            class='bx bxs-city icon'></i>
+                        State</a></li>
                 <li><a class="active" href="./country.html"><i
-                            class='bx bxs-city icon'></i> Country</a></li>
+                            class='bx bxs-city icon'></i>
+                        Country</a></li>
                 <li><a class="active" href="./contact.html"><i
-                            class='bx bxs-contact icon'></i> Contact</a></li>
+                            class='bx bxs-contact icon'></i>
+                        Contact</a></li>
                 <li><a class="active" href="./employee.html"><i
-                            class='bx bxs-user-pin icon'></i> Employee</a></li>
+                            class='bx bxs-user-pin icon'></i>
+                        Employee</a></li>
                 <li><a class="active" href="./office.html"><i
-                            class='bx bxs-business icon'></i> Office</a></li>
+                            class='bx bxs-business icon'></i>
+                        Office</a></li>
                 <li><a class="active" href="./employee.html"><i
                             class='bx bxs-user-plus icon'></i> Employee</a></li>
                 <li><a class="active" href="./order.html"><i
-                            class='bx bxs-store icon'></i> Order</a></li>
+                            class='bx bxs-store icon'></i>
+                        Order</a></li>
                 <li><a class="active" href="./payment.html"><i
                             class='bx bxs-badge-dollar icon'></i> Payment</a></li>
                 <li><a class="active" href="./products.html"><i
-                            class='bx bxs-coffee icon'></i> Product</a></li>
-                <li class="divider" data-text="Reports">Reports</li>
-                <li><a class="active" href="../Pages/reports.html"><i
-                            class='bx bxs-chart icon'></i> Charts</a></li>
+                            class='bx bxs-coffee icon'></i>
+                        Product</a></li>
             </ul>
         </section>
         <!-- SIDEBAR -->
@@ -79,51 +97,34 @@
 
             <!-- MAIN -->
             <main>
-                <h1 class="title">Products</h1>
+                <h1 class="title">Boss</h1>
                 <ul class="breadcrumbs">
                     <li><a href="#">Home</a></li>
                     <li class="divider">/</li>
-                    <li><a href="#" class="active">Products</a></li>
+                    <li><a href="#" class="active">Boss</a></li>
                 </ul>
                 <div class="data">
                     <div class="content-data">
                         <div class="head">
-                            <h3>Products Report</h3>
+                            <h3>Boss Report</h3>
                         </div>
-                        <h2>Selector de Campos con Condiciones LINQ</h2>
-
-                        <form id="queryBuilderForm">
-                            <label for="entity">Entidad:</label>
-                            <select id="entity">
-                                <option value="customer">Cliente</option>
-                                <option value="product">Producto</option>
-                                <!-- Entidades -->
+                        <div class="card-body">
+                            <select id="entitiesDropdown">
+                                <option value="client">Client</option>
+                                <option value="employee">Employee</option>
+                                <option value="Office">Office</option>
+                                <option value="order">Order</option>
+                                <option value="payment">Payment</option>
+                                <option value="product">Product</option>
                             </select>
 
-                            <label for="conditionField">Propiedad:</label>
-                            <select id="conditionField">
-                                <option value="Prop">Prop1</option>
-                                <option value="Prop">Prop2</option>
-                                <!-- Propiedades -->
+                            <select id="entityQueriesDropdown">
                             </select>
-
-                            <label for="conditionType">Tipo de Condición:</label>
-                            <select id="conditionType" name="conditionType">
-                                <option value="Equals">Igual a</option>
-                                <option value="NotEquals">No igual a</option>
-                                <option value="Contains">Contiene</option>
-                                <option value="StartsWith">Comienza con</option>
-                                <option value="EndsWith">Termina con</option>
-                                <!-- Agrega más opciones según sea necesario -->
-                            </select>
-
-                            <label for="conditionValue">Valor de Condición:</label>
-                            <input type="text" id="conditionValue"
-                                name="conditionValue">
-
-                            <button type="button" onclick="getQuery()">Generar
-                                Consulta</button>
-                        </form>
+                            <button type="button" class="btn" id="button">Consult</button>
+                            <table id="example" class="table table-striped"
+                                style="width:100%">
+                            </table>
+                        </div>
                         <br>
                         <hr>
                         <div class="dash-content">
@@ -144,6 +145,7 @@
             </main>
             <!-- MAIN -->
         </section>
+        <script src="../assets/js/Modules/consulting.js"></script>
         <script src="../assets/js/Modules/table.js"></script>
     </body>
 </html>
