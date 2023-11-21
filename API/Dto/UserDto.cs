@@ -8,6 +8,6 @@ namespace API.Dto
     public class UserDto
     {
         public required string email { get; set; }
-        public required string password { get; set; }
+        public required string Password { get; set; }
     }
 }

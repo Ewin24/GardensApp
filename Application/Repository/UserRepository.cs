@@ -17,9 +17,10 @@ namespace Application.Repository
         {
             _dbContext = context;
         }
-        public async Task<User> GetUserByEmailAsync(string email)
-    {
-        return await _dbContext.Users.FirstOrDefaultAsync(u => u.email == email);
-    }
+
+        public async Task<User> GetByEmailAsync(string email)
+        {
+            return await _dbContext.Users.FirstOrDefaultAsync(u => u.email == email);
+        }
     }
 }

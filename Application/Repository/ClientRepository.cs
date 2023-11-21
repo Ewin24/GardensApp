@@ -140,8 +140,6 @@ public class ClientRepository : GenericRepository<Client>, IClient
     //                          })
     //                          .ToListAsync();
     // }
-
-
     // // 4. Devuelve el nombre de los clientes que han hecho pagos y el nombre de sus representantes junto con la ciudad de la oficina a la que pertenece el representante.
     // public async Task<IEnumerable<object>> GetByOrderPaymentEmployee()
     // {
@@ -254,70 +252,67 @@ public class ClientRepository : GenericRepository<Client>, IClient
                             .OrderByDescending(p => p.SellingPrice)
                             .FirstOrDefaultAsync();
     }
-                    //11. Devuelve un listado que muestre solamente los clientes que no han realizado ningún pago.
-        // public async Task<IEnumerable<Client>> GetByNotOrder()
-        
-        // {
-        //     return await _context.Clients 
-        //                         .Where(c => c.Orders.Any(o => o.Payments == null))
-        //                         .ToListAsync();
-        // }
-        //                 //12. Devuelve un listado que muestre solamente los clientes que sí han realizado
-        // public async Task<IEnumerable<Client>> GetByOrderPaid()
-        // {
-        //     return await _context.Clients 
-        //                         .Where(c => c.Orders.Any(o => o.Payment != null))
-        //                         .ToListAsync();
-        // }
-          public async Task<IEnumerable<object>> GetNameAndOrdersQuantity()
-        {
-            return await _context.Clients
-                                .Select(c => new
-                                {
-                                    c.ClientName,
-                                    c.Orders.Count
-                                }).ToListAsync();
-        }
-                        //3. Devuelve el nombre del cliente, el nombre y primer apellido de su representante de ventas y el número de teléfono de la oficina del representante de ventas, de aquellos clientes que no hayan realizado ningún pago.
-        // public async Task<IEnumerable<object>> GetDataAndEmployee()
-        // {
-        //     return await _context.Clients
-        //                         .Where(c => c.Orders.Any(o => o.PaymentId == null))
-        //                         .Select(c => new
-        //                         {
-        //                             c.Name,
-        //                             AssociatedEmployees = c.Orders.Select(o => new
-        //                             {
-        //                                 o.Employee.Name,
-        //                                 o.Employee.LastName1,
-        //                                 OfficeNumber = o.Employee.Office.Phone
-        //                             })
-        //                         }).ToListAsync();
-        // }
-                        //4. Devuelve el listado de clientes donde aparezca el nombre del cliente, el nombre y primer apellido de su representante de ventas y la ciudad donde está su oficina.
-        // public async Task<IEnumerable<object>> GetDataAndEmployeeCity()
-        // {
-        //     return await _context.Clients
-        //                         .Select(c => new
-        //                         {
-        //                             c.ClientName,
-        //                             AssociatedEmployees = c.Orders.Select(o => new
-        //                             {
-        //                                 o.Employee.Name,
-        //                                 o.Employee.LastName1,
-        //                                 OfficeCity = o.Employee.Office.Address.City.Name
-        //                             })
-        //                         }).ToListAsync();
-        // }
-                                //2. Devuelve el nombre de los clientes que hayan hecho pedidos en 2008 ordenados alfabéticamente de menor a mayor.
-        public async Task<IEnumerable<Client>> GetByOrderInYear(int year)
-        {
-            return await _context.Clients
-                                .Where(c => c.Orders.All(o => o.OrderDate.Year > year))
-                                .OrderBy(c => c.ClientName)
-                                .ToListAsync();
-        }
+    //11. Devuelve un listado que muestre solamente los clientes que no han realizado ningún pago.
+    // public async Task<IEnumerable<Client>> GetByNotOrder()
 
-
-
+    // {
+    //     return await _context.Clients 
+    //                         .Where(c => c.Orders.Any(o => o.Payments == null))
+    //                         .ToListAsync();
+    // }
+    //                 //12. Devuelve un listado que muestre solamente los clientes que sí han realizado
+    // public async Task<IEnumerable<Client>> GetByOrderPaid()
+    // {
+    //     return await _context.Clients 
+    //                         .Where(c => c.Orders.Any(o => o.Payment != null))
+    //                         .ToListAsync();
+    // }
+    public async Task<IEnumerable<object>> GetNameAndOrdersQuantity()
+    {
+        return await _context.Clients
+                            .Select(c => new
+                            {
+                                c.ClientName,
+                                c.Orders.Count
+                            }).ToListAsync();
+    }
+    //3. Devuelve el nombre del cliente, el nombre y primer apellido de su representante de ventas y el número de teléfono de la oficina del representante de ventas, de aquellos clientes que no hayan realizado ningún pago.
+    // public async Task<IEnumerable<object>> GetDataAndEmployee()
+    // {
+    //     return await _context.Clients
+    //                         .Where(c => c.Orders.Any(o => o.PaymentId == null))
+    //                         .Select(c => new
+    //                         {
+    //                             c.Name,
+    //                             AssociatedEmployees = c.Orders.Select(o => new
+    //                             {
+    //                                 o.Employee.Name,
+    //                                 o.Employee.LastName1,
+    //                                 OfficeNumber = o.Employee.Office.Phone
+    //                             })
+    //                         }).ToListAsync();
+    // }
+    //4. Devuelve el listado de clientes donde aparezca el nombre del cliente, el nombre y primer apellido de su representante de ventas y la ciudad donde está su oficina.
+    // public async Task<IEnumerable<object>> GetDataAndEmployeeCity()
+    // {
+    //     return await _context.Clients
+    //                         .Select(c => new
+    //                         {
+    //                             c.ClientName,
+    //                             AssociatedEmployees = c.Orders.Select(o => new
+    //                             {
+    //                                 o.Employee.Name,
+    //                                 o.Employee.LastName1,
+    //                                 OfficeCity = o.Employee.Office.Address.City.Name
+    //                             })
+    //                         }).ToListAsync();
+    // }
+    //2. Devuelve el nombre de los clientes que hayan hecho pedidos en 2008 ordenados alfabéticamente de menor a mayor.
+    public async Task<IEnumerable<Client>> GetByOrderInYear(int year)
+    {
+        return await _context.Clients
+                            .Where(c => c.Orders.All(o => o.OrderDate.Year > year))
+                            .OrderBy(c => c.ClientName)
+                            .ToListAsync();
+    }
 }

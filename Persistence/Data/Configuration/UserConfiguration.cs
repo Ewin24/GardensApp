@@ -19,7 +19,7 @@ namespace Persistence.Data.Configuration
             builder.Property(e => e.email)
                 .HasMaxLength(50)
                 .HasColumnName("Email");
-            builder.Property(e => e.PasswordHash)
+            builder.Property(e => e.Password)
                 .HasMaxLength(50)
                 .HasColumnName("Password");
         }

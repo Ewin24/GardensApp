@@ -25,7 +25,7 @@ namespace Domain.Interfaces;
         IProductLine ProductLines {get;}
         IProveedor Proveedores {get;}
         IState States {get;}
-        IUser User {get;}
+        IUser Users {get;}
         Task<int> SaveAsync();
     }
 

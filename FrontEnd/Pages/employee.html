@@ -13,23 +13,36 @@
 	<body>
 		<!-- SIDEBAR -->
 		<section id="sidebar">
-			<a href="../index.html" class="brand"><i class='bx bxs-tree icon'></i> GardensApp</a>
+			<a href="../index.html" class="brand"><i class='bx bxs-tree icon'></i>
+				GardensApp</a>
 			<ul class="side-menu">
 				<li><a href="../index.html" class="active"><i class='bx bxs-dashboard icon'></i>
 						Dashboard</a></li>
-                <li><a class="active" href="./boss.html"><i class='bx bxs-user icon'></i>Boss</a></li>
-                <li><a class="active" href="./badges.html"><i class='bx bxs-badge icon'></i> Badges</a></li>
-                <li><a class="active" href="./client.html"><i class='bx bxs-dashboard icon'></i> Client</a></li>
-                <li><a class="active" href="./city.html"><i class='bx bxs-city icon'></i> City</a></li>
-                <li><a class="active" href="./state.html"><i class='bx bxs-city icon'></i> State</a></li>
-                <li><a class="active" href="./country.html"><i class='bx bxs-city icon'></i> Country</a></li>
-                <li><a class="active" href="./contact.html"><i class='bx bxs-contact icon'></i> Contact</a></li>
-                <li><a class="active" href="./employee.html"><i class='bx bxs-user-pin icon'></i> Employee</a></li>
-                <li><a class="active" href="./office.html"><i class='bx bxs-business icon'></i> Office</a></li>
-                <li><a class="active" href="./employee.html"><i class='bx bxs-user-plus icon'></i> Employee</a></li>
-                <li><a class="active" href="./order.html"><i class='bx bxs-store icon'></i> Order</a></li>
-                <li><a class="active" href="./payment.html"><i class='bx bxs-badge-dollar icon'></i> Payment</a></li>
-                <li><a class="active" href="./products.html"><i class='bx bxs-coffee icon'></i> Product</a></li>
+				<li><a class="active" href="./boss.html"><i class='bx bxs-user icon'></i>Boss</a></li>
+				<li><a class="active" href="./badges.html"><i class='bx bxs-badge icon'></i>
+						Badges</a></li>
+				<li><a class="active" href="./client.html"><i class='bx bxs-dashboard icon'></i>
+						Client</a></li>
+				<li><a class="active" href="./city.html"><i class='bx bxs-city icon'></i>
+						City</a></li>
+				<li><a class="active" href="./state.html"><i class='bx bxs-city icon'></i>
+						State</a></li>
+				<li><a class="active" href="./country.html"><i class='bx bxs-city icon'></i>
+						Country</a></li>
+				<li><a class="active" href="./contact.html"><i class='bx bxs-contact icon'></i>
+						Contact</a></li>
+				<li><a class="active" href="./employee.html"><i class='bx bxs-user-pin icon'></i>
+						Employee</a></li>
+				<li><a class="active" href="./office.html"><i class='bx bxs-business icon'></i>
+						Office</a></li>
+				<li><a class="active" href="./employee.html"><i
+							class='bx bxs-user-plus icon'></i> Employee</a></li>
+				<li><a class="active" href="./order.html"><i class='bx bxs-store icon'></i>
+						Order</a></li>
+				<li><a class="active" href="./payment.html"><i
+							class='bx bxs-badge-dollar icon'></i> Payment</a></li>
+				<li><a class="active" href="./products.html"><i class='bx bxs-coffee icon'></i>
+						Product</a></li>
 			</ul>
 		</section>
 		<!-- SIDEBAR -->
@@ -102,6 +115,19 @@
 							<input type="text" id="conditionValue" name="conditionValue">
 
 							<button type="button" onclick="getQuery()">Generar Consulta</button>
+							<br>
+							<hr>
+							<div class="dash-content">
+								<div class="overview">
+									<div class="title">
+										<i class="uil uil-database"></i>
+									</div>
+									<div class="card-body">
+										<table id="example" class="table table-striped" style="width:100%">
+										</table>
+									</div>
+								</div>
+							</div>
 						</form>
 					</div>
 
@@ -109,5 +135,6 @@
 			</main>
 			<!-- MAIN -->
 		</section>
+		<script src="../assets/js/Modules/table.js"></script>
 	</body>
 </html>

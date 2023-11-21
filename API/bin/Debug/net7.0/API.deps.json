@@ -998,6 +998,7 @@
       },
       "Persistence/1.0.0": {
         "dependencies": {
+          "BCrypt.Net-Next": "4.0.3",
           "Domain": "1.0.0",
           "Microsoft.EntityFrameworkCore": "7.0.14",
           "Pomelo.EntityFrameworkCore.MySql": "7.0.0"

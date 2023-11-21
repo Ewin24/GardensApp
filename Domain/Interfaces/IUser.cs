@@ -8,6 +8,6 @@ namespace Domain.Interfaces
 {
     public interface IUser : IGeneric<User>
     {
-         Task<User> GetUserByEmailAsync(string email);
+        Task<User> GetByEmailAsync(string email);
     }
 }

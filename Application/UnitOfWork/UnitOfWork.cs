@@ -18,7 +18,6 @@ public class UnitOfWork : IUnitOfWork, IDisposable
     }
     private IBoss _bosses;
     private ICity _cities;
-
     private IClient _clients;
     private IContact _contacts;
     private ICountry _countries;
@@ -34,7 +33,8 @@ public class UnitOfWork : IUnitOfWork, IDisposable
     private IProveedor _proveedores;
     private IState _states;
     private IUser _user;
-    public IBoss Bosses {
+    public IBoss Bosses
+    {
         get
         {
             if (_bosses == null)
@@ -45,7 +45,8 @@ public class UnitOfWork : IUnitOfWork, IDisposable
         }
     }
 
-    public IContact Contacts {
+    public IContact Contacts
+    {
         get
         {
             if (_contacts == null)
@@ -56,7 +57,8 @@ public class UnitOfWork : IUnitOfWork, IDisposable
         }
     }
 
-    public ICountry Countries {
+    public ICountry Countries
+    {
         get
         {
             if (_countries == null)
@@ -67,7 +69,8 @@ public class UnitOfWork : IUnitOfWork, IDisposable
         }
     }
 
-    public IClient Clients {
+    public IClient Clients
+    {
         get
         {
             if (_clients == null)
@@ -78,7 +81,8 @@ public class UnitOfWork : IUnitOfWork, IDisposable
         }
     }
 
-    public IEmployee Employee {
+    public IEmployee Employee
+    {
         get
         {
             if (_employee == null)
@@ -89,7 +93,8 @@ public class UnitOfWork : IUnitOfWork, IDisposable
         }
     }
 
-    public ILocationClient LocationClients {
+    public ILocationClient LocationClients
+    {
         get
         {
             if (_locationClients == null)
@@ -100,7 +105,8 @@ public class UnitOfWork : IUnitOfWork, IDisposable
         }
     }
 
-    public ILocationOffice LocationOffices {
+    public ILocationOffice LocationOffices
+    {
         get
         {
             if (_locationOffices == null)
@@ -111,7 +117,8 @@ public class UnitOfWork : IUnitOfWork, IDisposable
         }
     }
 
-    public IOffice Offices {
+    public IOffice Offices
+    {
         get
         {
             if (_offices == null)
@@ -122,7 +129,7 @@ public class UnitOfWork : IUnitOfWork, IDisposable
         }
     }
 
-    public IOrder Orders 
+    public IOrder Orders
     {
         get
         {
@@ -157,7 +164,7 @@ public class UnitOfWork : IUnitOfWork, IDisposable
         }
     }
 
-    public IProduct Products 
+    public IProduct Products
     {
         get
         {
@@ -169,7 +176,7 @@ public class UnitOfWork : IUnitOfWork, IDisposable
         }
     }
 
-    public IProductLine ProductLines 
+    public IProductLine ProductLines
     {
         get
         {
@@ -179,10 +186,10 @@ public class UnitOfWork : IUnitOfWork, IDisposable
             }
             return _productLines;
         }
-    
+
     }
 
-    public IProveedor Proveedores 
+    public IProveedor Proveedores
     {
         get
         {
@@ -192,10 +199,11 @@ public class UnitOfWork : IUnitOfWork, IDisposable
             }
             return _proveedores;
         }
-    
+
     }
 
-    public IState States {
+    public IState States
+    {
         get
         {
             if (_states == null)
@@ -206,7 +214,7 @@ public class UnitOfWork : IUnitOfWork, IDisposable
         }
     }
 
-    public ICity Cities 
+    public ICity Cities
     {
         get
         {
@@ -218,7 +226,8 @@ public class UnitOfWork : IUnitOfWork, IDisposable
         }
     }
 
-    public IUser User {
+    public IUser Users
+    {
         get
         {
             if (_user == null)
