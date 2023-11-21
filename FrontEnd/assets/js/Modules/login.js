@@ -27,32 +27,38 @@ document.addEventListener("DOMContentLoaded", function () {
             email: email,
             password: password
         };
-        const endpointUrl = "http://localhost:5019/user/login";
-        // Realizar la solicitud HTTP con los datos del formulario
-        fetch(endpointUrl, {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-            },
-            body: JSON.stringify(data),
-        })
-            .then(response => {
-                if (!response.ok) {
-                    throw new Error('Contraseña o email incorrecto');
-                }
-                return response.json();
+        if (email == "" || password == "") {
+            window.alert("Campos no validos")
+        } else {
+            const endpointUrl = "http://localhost:5019/user/login";
+            // Realizar la solicitud HTTP con los datos del formulario
+            fetch(endpointUrl, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(data),
             })
-            .then(data => {
-                if (data === true) {
-                    window.location.href = "/FrontEnd/index.html"; // Redirige si la respuesta es verdadera
-                } else {
-                    // Manejar el caso en el que la respuesta es falsa
-                    console.log("La respuesta del backend no es verdadera");
-                }
-            })
-            .catch(error => {
-                // Manejar errores y mostrar mensaje de error
-                alert(error.message);
-            });
+                .then(response => {
+                    if (!response.ok) {
+                        window.alert("Credenciales no validas")
+                        throw new Error('Contraseña o email incorrecto');
+                    }
+                    return response.json();
+                })
+                .then(data => {
+                    if (data === true) {
+                        window.location.href = "/FrontEnd/index.html"; // Redirige si la respuesta es verdadera
+                    } else {
+                        // Manejar el caso en el que la respuesta es falsa
+                        console.log("La respuesta del backend no es verdadera");
+                        window.alert("Credenciales no validas")
+                    }
+                })
+                .catch(error => {
+                    // Manejar errores y mostrar mensaje de error
+                    alert(error.message);
+                });
+        }
     });
 });

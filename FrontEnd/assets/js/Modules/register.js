@@ -18,7 +18,7 @@
         })
 })()
 document.addEventListener("DOMContentLoaded", function () {
-    document.querySelector("form").addEventListener("submit", function (event) {
+    document.getElementById("sign-up").addEventListener("click", function (event) {
         event.preventDefault();
         var email = document.getElementById("email").value;
         var password = document.getElementById("password").value;
@@ -27,27 +27,35 @@ document.addEventListener("DOMContentLoaded", function () {
             email: email,
             password: password
         };
-        const endpointUrl = "http://localhost:5019/user/register";
-        // Realizar la solicitud HTTP con los datos del formulario
-        fetch(endpointUrl, {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-            },
-            body: JSON.stringify(data),
-        })
-            .then(response => {
-                if (response.status === 200) {
-                    window.location.href = "/index.html"; // Redirige si el registro es exitoso
-                } else if (response.status === 400) {
-                    throw new Error('El usuario ya está registrado');
-                } else {
-                    throw new Error('Error al registrar usuario');
-                }
+
+        if (email == "" || password == "") {
+            window.alert("Campos no validos")
+        } else {
+
+            const endpointUrl = "http://localhost:5019/user/register";
+            // Realizar la solicitud HTTP con los datos del formulario
+            fetch(endpointUrl, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(data),
             })
-            .catch(error => {
-                // Manejar errores y mostrar mensaje de error
-                alert(error.message);
-            });
+                .then(response => {
+                    if (response.status === 200) {
+                        window.location.href = "/FrontEnd/index.html"; // Redirige si el registro es exitoso
+                    } else if (response.status === 400) {
+                        window.alert("El usuario ya está registrado")
+                        throw new Error('El usuario ya está registrado');
+                    } else {
+                        window.alert("Campos no validos")
+                        throw new Error('Error al registrar usuario');
+                    }
+                })
+                .catch(error => {
+                    // Manejar errores y mostrar mensaje de error
+                    alert(error.message);
+                });
+        }
     });
 });
