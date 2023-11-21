@@ -7,12 +7,12 @@ namespace API.Dto
 {
     public class ProductDto
     {
-        public string Id { get;  }
+         public string Id { get;set;  }
 
-        public string Name { get;  }
+        public string Name { get;set;  }
 
-        public string ProductLine { get;  } 
+        public string ProductLine { get;set;  } 
 
-        public string Dimensions { get;  }
+        public string Dimensions { get;set;  }
     }
 }
