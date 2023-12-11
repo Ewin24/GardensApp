@@ -9,11 +9,11 @@ using Persistence.Data;
 
 namespace Application.Repository;
 
-    public class BossRepository : GenericRepository<Boss>, IBoss
+public class BossRepository : GenericRepository<Boss>, IBoss
+{
+    private readonly JardineriaContext _context;
+    public BossRepository(JardineriaContext context) : base(context)
     {
-        private readonly  JardineriaContext _context;
-        public BossRepository(JardineriaContext context) : base(context)
-        {
-            _context = context;   
-        }
+        _context = context;
     }
+}
